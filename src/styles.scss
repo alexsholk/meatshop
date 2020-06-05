@@ -71,7 +71,11 @@ ul {
 }
 
 .container {
+  max-width: $containerWidth;
 
+  @media (min-width: $medium) {
+    margin: 0 auto;
+  }
 }
 
 .wrapper {

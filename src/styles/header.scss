@@ -6,11 +6,9 @@
   left: 0;
   width: 100%;
   z-index: $zHeader;
+  background: $light;
 
   .header-wrapper {
-
-    background: $light;
-
     .logo {
       text-align: center;
 
@@ -41,6 +39,12 @@
 
     .cart-link {
       float: right;
+
+      span {
+        margin-left: 2*$basis;
+        display: none;
+        font: 14px/18px $defaultFont;
+      }
     }
 
     .header-nav {
@@ -71,6 +75,40 @@
 
       &.active {
         display: block;
+      }
+    }
+
+    @media (min-width: $medium) {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: baseline;
+
+      .logo {
+        margin-right: 80px;
+      }
+
+      .header-nav-btn {
+        display: none;
+      }
+
+      .header-nav {
+        display: flex;
+        flex-flow: row nowrap;
+        position: relative;
+        top: 0;
+        left: 0;
+        width: auto;
+        padding: 0;
+      }
+
+      .cart-link {
+        float: none;
+        order: 3;
+        margin-left: auto;
+
+        span {
+          display: inline-block;
+        }
       }
     }
   }

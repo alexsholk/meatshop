@@ -192,4 +192,8 @@
       }
     }
   }
+
+  @media (min-width: $medium) {
+    width: calc(33.33% - 8px);
+  }
 }

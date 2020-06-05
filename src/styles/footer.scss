@@ -18,4 +18,10 @@
       }
     }
   }
+
+  @media (min-width: $medium) {
+    .footer-nav {
+      flex-flow: row nowrap;
+    }
+  }
 }
