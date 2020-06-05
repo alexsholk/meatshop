@@ -26,6 +26,34 @@
   <div class="main-content">
     <div class="container">
       <div class="wrapper content-wrapper">
+        <!-- Fixed cart -->
+        <div class="fixed-cart">
+          <div class="details">
+            <h3 class="details-header">Корзина <button class="open-close-btn fa fa-angle-up"></button></h3>
+            <ul>
+              <li *ngFor="let i of [].constructor(3)">
+                <button class="remove-btn">&times;</button>
+                <img src="../assets/mock/1.jpg" alt="">
+                <div class="cart-item-info">
+                  <h4>Грудинка</h4>
+                  <p>
+                    Нарезка: куски (средний)<br>
+                    Маринад: чесночный<br>
+                    Специи: хмели-сунели<br>
+                  </p>
+                </div>
+              </li>
+            </ul>
+            <div class="summary">
+              <span>Сумма заказа:</span> <strong>2580 &#8381;</strong>
+            </div>
+            <a href="#" class="cart-link">Оформить</a>
+          </div>
+          <span class="fa fa-shopping-cart"></span>
+          <span class="price">2580 &#8381;</span>
+        </div>
+        <!-- /Fixed cart -->
+
         <!-- Product list -->
         <div class="product-list-wrapper" *ngFor="let i of [].constructor(3); index as idx">
           <a [name]="'c' + (idx + 1)"></a>
@@ -60,7 +88,7 @@
                 </ul>
                 <div class="product-quantity-container">
                   <label>Количество</label>
-                  <button class="minus-btn">-</button>
+                  <button class="minus-btn disabled">-</button>
                   <input type="text" class="quantity" value="1">
                   <button class="plus-btn">+</button>
                 </div>
@@ -92,11 +120,4 @@
     </div>
   </footer>
   <!-- /Footer -->
-
-  <!-- Fixed cart -->
-  <div class="fixed-cart">
-    <span class="fa fa-shopping-cart"></span>
-    <span class="price">768 &#8381;</span>
-  </div>
-  <!-- /Fixed cart -->
 </div>

@@ -24,7 +24,7 @@
   }
 
   @media (min-width: $large) {
-    margin-right: 300px;
+    margin-right: 340px;
     .product-list-header {
       padding: 3*$basis 2*$basis;
 
@@ -118,19 +118,25 @@
       .quantity {
         font-size: 16px;
         text-align: center;
-        width: 12*$basis;
+        width: 10*$basis;
+        margin: 0 $basis;
         height: 6*$basis;
-        border: 1px solid $light;
+        border: none;
       }
 
       .minus-btn,
       .plus-btn {
+        border-radius: 4*$basis;
         width: 6*$basis;
         height: 6*$basis;
         padding: $basis;
-        background: $accent;
+        background: $neutral;
         color: $white;
         text-align: center;
+        font-weight: bold;
+        &.disabled {
+          background: desaturate($neutral, 100%);
+        }
       }
     }
 

@@ -39,6 +39,7 @@
 
     .cart-link {
       float: right;
+      color: $accent;
 
       span {
         margin-left: 2*$basis;
@@ -58,17 +59,18 @@
       background: $light;
 
       li {
+        text-align: center;
+
         a {
           text-align: center;
-          display: block;
+          display: inline-block;
           padding: 2*$basis 4*$basis;
         }
 
         &.active {
-          background: $accent;
-
           a {
-            color: $white;
+            color: $accent;
+            border-bottom: 2px solid $accent;
           }
         }
       }
@@ -99,6 +101,10 @@
         left: 0;
         width: auto;
         padding: 0;
+
+        &.active {
+          display: flex;
+        }
       }
 
       .cart-link {
