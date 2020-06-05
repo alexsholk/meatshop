@@ -1,0 +1,17 @@
+@import "./variables";
+
+.fixed-cart {
+  position: fixed;
+  right: 0;
+  bottom: 12*$basis;
+  padding: 3*$basis 4*$basis;
+  background: $accent;
+  color: $white;
+  font: 14px/16px $defaultFont;
+  box-shadow: $shadow;
+
+  .fa-shopping-cart {
+    display: inline-block;
+    margin-right: 2* $basis;
+  }
+}

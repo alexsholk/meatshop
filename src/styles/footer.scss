@@ -1,0 +1,21 @@
+@import "./variables";
+
+.footer-wrapper {
+  padding: 4*$basis 0;
+
+  .footer-nav {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+
+    li {
+      margin-bottom: $basis;
+
+      a {
+        &.active {
+          color: $accent;
+        }
+      }
+    }
+  }
+}

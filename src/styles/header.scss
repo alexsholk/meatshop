@@ -1,0 +1,77 @@
+@import "./variables";
+
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: $zHeader;
+
+  .header-wrapper {
+
+    background: $light;
+
+    .logo {
+      text-align: center;
+
+      a {
+        font: bolder 24px $slabFont;
+        color: $dark;
+
+        &:hover {
+          color: $dark;
+        }
+
+        span {
+          color: $accent;
+        }
+      }
+    }
+
+    .header-nav-btn,
+    .cart-link {
+      padding: $basis;
+      font-size: 24px;
+      line-height: 24px;
+    }
+
+    .header-nav-btn {
+      float: left;
+    }
+
+    .cart-link {
+      float: right;
+    }
+
+    .header-nav {
+      display: none;
+      position: fixed;
+      top: $hHeader;
+      left: 0;
+      width: 100%;
+      padding: 3*$basis 4*$basis;
+      z-index: $zHeader;
+      background: $light;
+
+      li {
+        a {
+          text-align: center;
+          display: block;
+          padding: 2*$basis 4*$basis;
+        }
+
+        &.active {
+          background: $accent;
+
+          a {
+            color: $white;
+          }
+        }
+      }
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+}
