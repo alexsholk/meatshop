@@ -7,13 +7,31 @@
     padding: 3*$basis 5*$basis;
 
     h1 {
+      text-align: left;
     }
   }
 
+  @media (min-width: $small) {
+    margin: 0 -$basis;
+    .product-list-header {
+      padding: 3*$basis 0;
+
+      h1 {
+        font-size: 22px;
+        text-align: center;
+      }
+    }
+  }
 }
 
 .product-list {
   margin: 0 0 8*$basis;
+  display: flex;
+  flex-flow: column nowrap;
+
+  @media (min-width: $small) {
+    flex-flow: row wrap;
+  }
 }
 
 .product {
@@ -56,6 +74,50 @@
       color: lighten($dark, 2);
     }
 
+    .product-options {
+      display: none;
+      margin: 0 0 3*$basis;
+      line-height: 22px;
+      li {
+        strong {
+          display: inline-block;
+          min-width: 110px;
+        }
+        a {
+          color: $accent;
+          border-bottom: 1px dashed $accent;
+        }
+      }
+    }
+
+    .product-quantity-container {
+      display: none;
+      margin: 0 0 3*$basis;
+      flex-flow: row nowrap;
+      align-items: baseline;
+      label {
+        flex-grow: 1;
+        margin-right: 2*$basis;
+        text-align: right;
+      }
+      .quantity {
+        font-size: 16px;
+        text-align: center;
+        width: 12*$basis;
+        height: 6*$basis;
+        border: 1px solid $light;
+      }
+      .minus-btn,
+      .plus-btn {
+        width: 6*$basis;
+        height: 6*$basis;
+        padding: $basis;
+        background: $accent;
+        color: $white;
+        text-align: center;
+      }
+    }
+
     .product-controls {
       display: flex;
       flex-flow: row nowrap;
@@ -66,11 +128,67 @@
         flex-grow: 1;
       }
 
-      .choose-btn {
+      .rounded-button {
         padding: 2*$basis 4*$basis;
-        background: $neutral;
+        background: $altAccent;
         color: $white;
         border-radius: 4*$basis;
+      }
+
+      .choose-btn {
+        display: block;
+      }
+
+      .add-to-cart-btn {
+        display: none;
+        background: $altAccent;
+      }
+    }
+  }
+
+
+  @media (min-width: $small) {
+    margin: $basis;
+    padding: 3*$basis 4*$basis;
+    width: calc(50% - 8px);
+    border: 1px solid $light;
+    border-radius: $basis;
+    flex-flow: column nowrap;
+
+    &:last-child {
+      border-bottom: 1px solid $light;
+    }
+
+    figure {
+      margin: -3*$basis -4*$basis 3*$basis;
+
+      img {
+        display: block;
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+      }
+    }
+
+    .product-info {
+      padding: 0;
+
+      .product-options {
+        display: block;
+      }
+
+      .product-quantity-container {
+        display: flex;
+      }
+
+      .product-controls {
+        .choose-btn {
+          display: none;
+        }
+
+        .add-to-cart-btn {
+          display: block;
+        }
       }
     }
   }
