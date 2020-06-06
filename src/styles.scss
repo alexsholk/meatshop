@@ -16,6 +16,7 @@
 
 body {
   min-height: 100vh;
+  min-width: 320px;
   background: $white url("assets/bg.jpg") 50% 0 no-repeat;
   background-size: cover;
   font: 14px $defaultFont;
