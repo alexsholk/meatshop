@@ -25,6 +25,7 @@
     "component-selector": [
       true,
       "element",
+      "attribute",
       "app",
       "kebab-case"
     ],
@@ -82,7 +83,7 @@
     ],
     "semicolon": {
       "options": [
-        "always"
+        "never"
       ]
     },
     "space-before-function-paren": {

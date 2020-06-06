@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="wrapper content-wrapper">
+    <div class="main-column">
+      <!-- Product list -->
+      <div class="product-list-wrapper" *ngFor="let i of [].constructor(3); index as idx">
+        <a [name]="'c' + (idx + 1)"></a>
+        <div class="product-list-header">
+          <h1>Свинина</h1>
+        </div>
+        <ul class="product-list">
+          <li class="product" *ngFor="let i of [].constructor(5)">
+            <figure>
+              <img src="../../assets/mock/1.jpg" alt="">
+            </figure>
+            <div class="product-info">
+              <h3>Шея</h3>
+              <div class="product-description">
+                <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aliquam
+                    debitis delectus dolores.</span>
+                </p>
+              </div>
+              <ul class="product-options">
+                <li>
+                  <strong>Нарезка:</strong> <a>Куски</a>
+                </li>
+                <li>
+                  <strong>Размер куска:</strong> <a>Средний</a>
+                </li>
+                <li>
+                  <strong>Маринад:</strong> <a>Чесночный</a>
+                </li>
+                <li>
+                  <strong>Специи:</strong> <a>Смесь перцев</a>
+                </li>
+              </ul>
+              <div class="product-quantity-container">
+                <label>Количество</label>
+                <button class="minus-btn disabled">-</button>
+                <input type="text" class="quantity" value="1">
+                <button class="plus-btn">+</button>
+              </div>
+              <div class="product-controls">
+                <div class="total-price">от <strong>560</strong>&nbsp;&#8381;/кг</div>
+                <button class="rounded-button choose-btn">Выбрать</button>
+                <button class="rounded-button add-to-cart-btn">В корзину</button>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <!-- /Product list -->
+    </div>
+
+    <aside class="side-column">
+      <!-- Fixed cart -->
+      <div class="fixed-cart">
+        <div class="details">
+          <h3 class="details-header">Корзина
+            <button class="open-close-btn fa fa-angle-up"></button>
+          </h3>
+          <ul>
+            <li *ngFor="let i of [].constructor(3)">
+              <button class="remove-btn">&times;</button>
+              <img src="../../assets/mock/1.jpg" alt="">
+              <div class="cart-item-info">
+                <h4>Грудинка</h4>
+                <div class="description">
+                  <p>
+                    Нарезка: куски (средний)<br>
+                    Маринад: чесночный<br>
+                    Специи: хмели-сунели<br>
+                  </p>
+                  <div class="item-price">480 &#8381;</div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="summary">
+            <span>Сумма заказа:</span> <strong>2580 &#8381;</strong>
+          </div>
+          <a href="#" class="cart-link">Оформить</a>
+        </div>
+        <span class="fa fa-shopping-cart"></span>
+        <span class="total-price">2580 &#8381;</span>
+      </div>
+      <!-- /Fixed cart -->
+    </aside>
+  </div>
+</div>

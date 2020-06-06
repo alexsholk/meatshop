@@ -1,130 +1,15 @@
 <div class="theme-root">
   <!-- Header -->
-  <header class="main-header">
-    <div class="container">
-      <div class="wrapper header-wrapper">
-        <button class="header-nav-btn fa fa-bars"
-                onclick="document.getElementsByClassName('header-nav')[0].classList.toggle('active')"></button>
-        <a href="#" class="cart-link fa fa-shopping-cart">
-          <span>Корзина (5)</span>
-        </a>
-        <div class="logo">
-          <a href="#">Milov<span>eat.ru</span></a>
-        </div>
-        <ul class="header-nav">
-          <li class="active"><a href="#c1">Свинина</a></li>
-          <li><a href="#c2">Говядина</a></li>
-          <li><a href="#c3">Баранина</a></li>
-          <li><a href="#c4">Курица</a></li>
-        </ul>
-      </div>
-    </div>
-  </header>
+  <header class="main-header"></header>
   <!-- /Header -->
 
   <!-- Main content -->
   <div class="main-content">
-    <div class="container">
-      <div class="wrapper content-wrapper">
-        <div class="main-column">
-          <!-- Product list -->
-          <div class="product-list-wrapper" *ngFor="let i of [].constructor(3); index as idx">
-            <a [name]="'c' + (idx + 1)"></a>
-            <div class="product-list-header">
-              <h1>Свинина</h1>
-            </div>
-            <ul class="product-list">
-              <li class="product" *ngFor="let i of [].constructor(5)">
-                <figure>
-                  <img src="../assets/mock/1.jpg" alt="">
-                </figure>
-                <div class="product-info">
-                  <h3>Шея</h3>
-                  <div class="product-description">
-                    <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aliquam
-                    debitis delectus dolores.</span>
-                    </p>
-                  </div>
-                  <ul class="product-options">
-                    <li>
-                      <strong>Нарезка:</strong> <a>Куски</a>
-                    </li>
-                    <li>
-                      <strong>Размер куска:</strong> <a>Средний</a>
-                    </li>
-                    <li>
-                      <strong>Маринад:</strong> <a>Чесночный</a>
-                    </li>
-                    <li>
-                      <strong>Специи:</strong> <a>Смесь перцев</a>
-                    </li>
-                  </ul>
-                  <div class="product-quantity-container">
-                    <label>Количество</label>
-                    <button class="minus-btn disabled">-</button>
-                    <input type="text" class="quantity" value="1">
-                    <button class="plus-btn">+</button>
-                  </div>
-                  <div class="product-controls">
-                    <div class="total-price">от <strong>560</strong>&nbsp;&#8381;/кг</div>
-                    <button class="rounded-button choose-btn">Выбрать</button>
-                    <button class="rounded-button add-to-cart-btn">В корзину</button>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <!-- /Product list -->
-        </div>
-
-        <aside class="side-column">
-          <!-- Fixed cart -->
-          <div class="fixed-cart">
-            <div class="details">
-              <h3 class="details-header">Корзина <button class="open-close-btn fa fa-angle-up"></button></h3>
-              <ul>
-                <li *ngFor="let i of [].constructor(3)">
-                  <button class="remove-btn">&times;</button>
-                  <img src="../assets/mock/1.jpg" alt="">
-                  <div class="cart-item-info">
-                    <h4>Грудинка</h4>
-                    <div class="description">
-                      <p>
-                        Нарезка: куски (средний)<br>
-                        Маринад: чесночный<br>
-                        Специи: хмели-сунели<br>
-                      </p>
-                      <div class="item-price">480 &#8381;</div>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              <div class="summary">
-                <span>Сумма заказа:</span> <strong>2580 &#8381;</strong>
-              </div>
-              <a href="#" class="cart-link">Оформить</a>
-            </div>
-            <span class="fa fa-shopping-cart"></span>
-            <span class="total-price">2580 &#8381;</span>
-          </div>
-          <!-- /Fixed cart -->
-        </aside>
-      </div>
-    </div>
+    <router-outlet></router-outlet>
   </div>
   <!-- /Main content -->
 
   <!-- Footer -->
-  <footer class="main-footer">
-    <div class="container">
-      <div class="wrapper footer-wrapper">
-        <ul class="footer-nav">
-          <li><a href="#" class="active">Реквизиты</a></li>
-          <li><a href="#">Пользовательское соглашение</a></li>
-          <li><a href="#">Соглашение на обработку персональных данных</a></li>
-        </ul>
-      </div>
-    </div>
-  </footer>
+  <footer class="main-footer"></footer>
   <!-- /Footer -->
 </div>

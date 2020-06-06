@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="wrapper footer-wrapper">
+    <ul class="footer-nav">
+      <li *ngFor="let link of links" routerLinkActive="active">
+        <a [routerLink]="link.route">{{ link.title }}</a>
+      </li>
+    </ul>
+  </div>
+</div>

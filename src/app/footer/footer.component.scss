@@ -1,7 +1,7 @@
-@import "./variables";
+@import "../../styles/variables";
 
 .footer-wrapper {
-  padding: 4*$basis 0;
+  padding: 4*$basis;
 
   .footer-nav {
     display: flex;
