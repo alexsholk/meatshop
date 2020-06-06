@@ -83,6 +83,7 @@
             flex-flow: row nowrap;
             align-items: flex-end;
             padding-right: 2*$basis;
+
             p {
               flex-grow: 1;
               font-size: 11px;
@@ -121,12 +122,9 @@
   }
 
   @media (min-width: $large) {
-    position: relative;
-    float: right;
-    right: auto;
-    bottom: auto;
     margin-top: 48px;
-    width: 320px;
+    position: sticky;
+    top: 63px + 3*$basis + 48px; // Header height + margins
     background: $white;
     box-shadow: none;
     border-bottom: 4px solid $light;

@@ -84,8 +84,24 @@ ul {
 }
 
 .main-content {
-  margin-top: $hHeader;
   flex-grow: 1;
 }
 
+.content-wrapper {
+  @media (min-width: $large) {
+    display: flex;
+    flex-flow: row nowrap;
 
+    .main-column {
+      flex-grow: 1;
+    }
+
+    .side-column {
+      display: block;
+      width: 320px;
+      margin-left: 6*$basis;
+      flex-shrink: 0;
+
+    }
+  }
+}

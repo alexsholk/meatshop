@@ -1,7 +1,7 @@
 @import "./variables";
 
 .main-header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -51,7 +51,7 @@
     .header-nav {
       display: none;
       position: fixed;
-      top: $hHeader;
+      top: $hHeader - 2px; // Slightly overlap to prevent gape
       left: 0;
       width: 100%;
       padding: 3*$basis 4*$basis;
