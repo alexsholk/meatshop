@@ -37,10 +37,10 @@ a {
   text-decoration: none;
   color: $dark;
   outline: none;
+  transition: color .3s;
 
   &:hover {
     color: $accent;
-    transition: .3s;
   }
 }
 

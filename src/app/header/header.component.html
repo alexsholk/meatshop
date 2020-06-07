@@ -7,9 +7,10 @@
     <div class="logo">
       <a routerLink="/">Milov<span>eat.ru</span></a>
     </div>
-    <ul class="header-nav" [class.active]="isNavActive">
-      <li *ngFor="let category of store.getCategories() | async">
-        <a (click)="scrollTo('category-' + category.id)">{{ category.data.title }}</a>
+    <ul class="header-nav" [class.active]="isNavActive" (click)="isNavActive = false">
+      <li *ngFor="let category of store.getCategories() | async"
+          [class.active]="(state.getCurrentCategory() | async)?.id === category.id">
+        <a [routerLink]="['/c', category.data.slug]">{{ category.data.title }}</a>
       </li>
     </ul>
   </div>

@@ -7,6 +7,7 @@ import {OrderComponent} from './order/order.component'
 
 const routes: Routes = [
   {path: '', component: StoreComponent, pathMatch: 'full'},
+  {path: 'c/:slug', component: StoreComponent},
   {path: 'p/:slug', component: HtmlComponent},
   {path: 'order', component: OrderComponent},
   {path: '**', redirectTo: 'p/404'},

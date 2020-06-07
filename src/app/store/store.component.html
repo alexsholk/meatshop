@@ -3,8 +3,8 @@
     <div class="main-column">
       <!-- Product list -->
       <div class="product-list-wrapper"
-           *ngFor="let category of store.getCategories() | async; index as idx"
-           id="{{ 'category-' + category.id }}">
+           *ngIf="state.getCurrentCategory() | async as category"
+           [@fade]="category.id">
         <div class="product-list-header">
           <h1>{{ category.data.title }}</h1>
         </div>
