@@ -65,6 +65,7 @@
           text-align: center;
           display: inline-block;
           padding: 2*$basis 4*$basis;
+          cursor: pointer;
         }
 
         &.active {

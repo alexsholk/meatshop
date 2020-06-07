@@ -8,10 +8,9 @@
       <a routerLink="/">Milov<span>eat.ru</span></a>
     </div>
     <ul class="header-nav" [class.active]="isNavActive">
-      <li class="active"><a href="#c1">Свинина</a></li>
-      <li><a href="#c2">Говядина</a></li>
-      <li><a href="#c3">Баранина</a></li>
-      <li><a href="#c4">Курица</a></li>
+      <li *ngFor="let category of store.getCategories() | async">
+        <a (click)="scrollTo('category-' + category.id)">{{ category.data.title }}</a>
+      </li>
     </ul>
   </div>
 </div>

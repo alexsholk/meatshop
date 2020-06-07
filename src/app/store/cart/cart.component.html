@@ -1,0 +1,28 @@
+<div class="details">
+  <h3 class="details-header">Корзина
+    <button class="open-close-btn fa fa-angle-up"></button>
+  </h3>
+  <ul>
+    <li *ngFor="let i of [].constructor(3)">
+      <button class="remove-btn">&times;</button>
+      <img src="../../../assets/mock/1.jpg" alt="">
+      <div class="cart-item-info">
+        <h4>Грудинка</h4>
+        <div class="description">
+          <p>
+            Нарезка: куски (средний)<br>
+            Маринад: чесночный<br>
+            Специи: хмели-сунели<br>
+          </p>
+          <div class="item-price">480 &#8381;</div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div class="summary">
+    <span>Сумма заказа:</span> <strong>2580 &#8381;</strong>
+  </div>
+  <a href="#" class="cart-link">Оформить</a>
+</div>
+<span class="fa fa-shopping-cart"></span>
+<span class="total-price">2580 &#8381;</span>

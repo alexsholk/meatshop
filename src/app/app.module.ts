@@ -10,6 +10,7 @@ import {StoreComponent} from './store/store.component'
 import {HtmlComponent} from './html/html.component'
 import {OrderComponent} from './order/order.component'
 import {HttpClientModule} from '@angular/common/http'
+import {CartComponent} from './store/cart/cart.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {HttpClientModule} from '@angular/common/http'
     HeaderComponent,
     StoreComponent,
     HtmlComponent,
-    OrderComponent
+    OrderComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

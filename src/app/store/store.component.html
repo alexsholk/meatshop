@@ -2,10 +2,11 @@
   <div class="wrapper content-wrapper">
     <div class="main-column">
       <!-- Product list -->
-      <div class="product-list-wrapper" *ngFor="let i of [].constructor(3); index as idx">
-        <a [name]="'c' + (idx + 1)"></a>
+      <div class="product-list-wrapper"
+           *ngFor="let category of store.getCategories() | async; index as idx"
+           id="{{ 'category-' + category.id }}">
         <div class="product-list-header">
-          <h1>Свинина</h1>
+          <h1>{{ category.data.title }}</h1>
         </div>
         <ul class="product-list">
           <li class="product" *ngFor="let i of [].constructor(5)">
@@ -53,36 +54,7 @@
 
     <aside class="side-column">
       <!-- Fixed cart -->
-      <div class="fixed-cart">
-        <div class="details">
-          <h3 class="details-header">Корзина
-            <button class="open-close-btn fa fa-angle-up"></button>
-          </h3>
-          <ul>
-            <li *ngFor="let i of [].constructor(3)">
-              <button class="remove-btn">&times;</button>
-              <img src="../../assets/mock/1.jpg" alt="">
-              <div class="cart-item-info">
-                <h4>Грудинка</h4>
-                <div class="description">
-                  <p>
-                    Нарезка: куски (средний)<br>
-                    Маринад: чесночный<br>
-                    Специи: хмели-сунели<br>
-                  </p>
-                  <div class="item-price">480 &#8381;</div>
-                </div>
-              </div>
-            </li>
-          </ul>
-          <div class="summary">
-            <span>Сумма заказа:</span> <strong>2580 &#8381;</strong>
-          </div>
-          <a href="#" class="cart-link">Оформить</a>
-        </div>
-        <span class="fa fa-shopping-cart"></span>
-        <span class="total-price">2580 &#8381;</span>
-      </div>
+      <div class="fixed-cart"></div>
       <!-- /Fixed cart -->
     </aside>
   </div>
