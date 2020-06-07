@@ -1,4 +1,5 @@
 import {Component, ViewEncapsulation} from '@angular/core'
+import {CartService} from '../store/cart.service'
 
 @Component({
   selector: '.main-header',
@@ -8,6 +9,10 @@ import {Component, ViewEncapsulation} from '@angular/core'
 })
 export class HeaderComponent {
   public isNavActive = false
+
+  constructor(
+    public cart: CartService) {
+  }
 
   toggleNavActive() {
     this.isNavActive = !this.isNavActive
