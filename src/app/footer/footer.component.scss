@@ -9,10 +9,10 @@
     justify-content: space-around;
 
     li {
-      margin-bottom: $basis;
+      margin-bottom: 2*$basis;
 
-      a {
-        &.active {
+      &.active {
+        a {
           color: $accent;
         }
       }

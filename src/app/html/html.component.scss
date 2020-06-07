@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+
+.simple-page-wrapper {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 10*$basis 0;
+
+  .simple-page-header {
+    padding: 3*$basis 0;
+    margin-bottom: 3*$basis;
+    font-size: 22px;
+  }
+
+  .simple-page-content {
+    text-align: justify;
+    line-height: 18px;
+  }
+}
