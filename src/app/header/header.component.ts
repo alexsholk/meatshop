@@ -7,5 +7,9 @@ import {Component, ViewEncapsulation} from '@angular/core'
   encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent {
+  public isNavActive = false
 
+  toggleNavActive() {
+    this.isNavActive = !this.isNavActive
+  }
 }

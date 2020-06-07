@@ -1,14 +1,13 @@
 <div class="container">
   <div class="wrapper header-wrapper">
-    <button class="header-nav-btn fa fa-bars"
-            onclick="document.getElementsByClassName('header-nav')[0].classList.toggle('active')"></button>
+    <button class="header-nav-btn fa fa-bars" (click)="toggleNavActive()"></button>
     <a href="#" class="cart-link fa fa-shopping-cart">
       <span>Корзина (5)</span>
     </a>
     <div class="logo">
       <a href="#">Milov<span>eat.ru</span></a>
     </div>
-    <ul class="header-nav">
+    <ul class="header-nav" [class.active]="isNavActive">
       <li class="active"><a href="#c1">Свинина</a></li>
       <li><a href="#c2">Говядина</a></li>
       <li><a href="#c3">Баранина</a></li>
