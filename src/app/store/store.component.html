@@ -8,13 +8,13 @@
         <div class="product-list-header">
           <h1>{{ category.data.title }}</h1>
         </div>
-        <ul class="product-list">
-          <li class="product" *ngFor="let i of [].constructor(5)">
+        <ul class="product-list" *ngIf="products$ | async as products">
+          <li class="product" *ngFor="let product of products">
             <figure>
               <img src="../../assets/mock/1.jpg" alt="">
             </figure>
             <div class="product-info">
-              <h3>Шея</h3>
+              <h3>{{ product.data.title }}</h3>
               <div class="product-description">
                 <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aliquam
                     debitis delectus dolores.</span>

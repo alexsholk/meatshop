@@ -6,3 +6,7 @@ export interface Category {
     title: string
   }
 }
+
+export class Product {
+  id: number
+}

@@ -2,8 +2,8 @@ import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core'
 import {StoreService} from './store.service'
 import {StateService} from './state.service'
 import {ActivatedRoute, Router} from '@angular/router'
-import {combineLatest} from 'rxjs'
-import {Category} from './types'
+import {combineLatest, Observable} from 'rxjs'
+import {Category, Product} from './types'
 import {appAnimations} from '../app.animations'
 
 @Component({
@@ -14,6 +14,7 @@ import {appAnimations} from '../app.animations'
   animations: appAnimations
 })
 export class StoreComponent implements OnInit, OnDestroy {
+  public products$: Observable<Product[]>
 
   constructor(
     private route: ActivatedRoute,
@@ -25,19 +26,22 @@ export class StoreComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     combineLatest([this.store.getCategories(), this.route.params])
       .subscribe(([categories, {slug}]) => {
-        let currentCategory: Category
-        if (slug) {
-          currentCategory = categories.find(category => category.data.slug === slug)
-          if (!currentCategory) {
-            return this.router.navigateByUrl('p/404')
-          }
-        } else if (categories[0]) {
-          currentCategory = categories[0]
+        const currentCategory = this.determineCurrentCategory(categories, slug)
+        if (currentCategory) {
+          this.state.setCurrentCategory(currentCategory)
+          this.products$ = this.store.getProductsByCategoryId(currentCategory.id)
         } else {
           return this.router.navigateByUrl('p/404')
         }
-        this.state.setCurrentCategory(currentCategory)
       })
+  }
+
+  private determineCurrentCategory(categories: Category[], slug: string): Category | null {
+    if (slug) {
+      return categories.find(category => category.data.slug === slug)
+    } else if (categories[0]) {
+      return categories[0]
+    }
   }
 
   ngOnDestroy(): void {

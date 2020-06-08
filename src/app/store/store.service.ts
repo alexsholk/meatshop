@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core'
 import {Observable} from 'rxjs'
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpParams} from '@angular/common/http'
 import {environment} from '../../environments/environment'
 import {shareReplay} from 'rxjs/operators'
-import {Category} from './types'
+import {Category, Product} from './types'
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +19,10 @@ export class StoreService {
 
   getCategories(): Observable<Category[]> {
     return this.categories$
+  }
+
+  getProductsByCategoryId(categoryId: number): Observable<Product[]> {
+    const params = new HttpParams().set('category_id', categoryId.toString())
+    return this.httpClient.get<any>(`${environment.apiUrl}/products`, {params}).pipe(shareReplay())
   }
 }
