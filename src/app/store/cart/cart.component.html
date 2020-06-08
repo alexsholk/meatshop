@@ -1,9 +1,8 @@
 <div class="details">
-  <h3 class="details-header">Корзина
-    <button class="open-close-btn fa"
-            [ngClass]="{'fa-angle-up': isOpen, 'fa-angle-down': !isOpen}"
-            (click)="toggleCartView()">
-    </button>
+  <h3 class="details-header" (click)="toggleCartView()">Корзина
+    <span class="open-close-btn fa"
+          [ngClass]="{'fa-angle-up': isOpen, 'fa-angle-down': !isOpen}">
+    </span>
   </h3>
   <ul *ngIf="isOpen">
     <li *ngFor="let i of [].constructor(3)">
@@ -25,7 +24,7 @@
   <div class="summary">
     <span>Сумма заказа:</span> <strong>2580 &#8381;</strong>
   </div>
-  <a href="#" class="cart-link">Оформить</a>
+  <a routerLink="/order" class="cart-link">Оформить</a>
 </div>
 <span class="fa fa-shopping-cart"></span>
 <span class="total-price">2580 &#8381;</span>
