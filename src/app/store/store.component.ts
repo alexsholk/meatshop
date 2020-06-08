@@ -3,7 +3,7 @@ import {StoreService} from './store.service'
 import {StateService} from './state.service'
 import {ActivatedRoute, Router} from '@angular/router'
 import {combineLatest, Observable} from 'rxjs'
-import {Category, Product} from './types'
+import {Category, ProductWrapper} from './types'
 import {appAnimations} from '../app.animations'
 
 @Component({
@@ -14,7 +14,7 @@ import {appAnimations} from '../app.animations'
   animations: appAnimations
 })
 export class StoreComponent implements OnInit, OnDestroy {
-  public products$: Observable<Product[]>
+  public products$: Observable<ProductWrapper[]>
 
   constructor(
     private route: ActivatedRoute,

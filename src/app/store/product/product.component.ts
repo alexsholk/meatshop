@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core'
-import {Product} from '../types'
+import {ProductWrapper} from '../types'
 
 @Component({
   selector: '[app-product]',
@@ -8,7 +8,7 @@ import {Product} from '../types'
   encapsulation: ViewEncapsulation.None
 })
 export class ProductComponent implements OnInit {
-  @Input() product: Product
+  @Input() product: ProductWrapper
 
   constructor() {
   }

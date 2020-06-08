@@ -1,12 +1,10 @@
 <figure>
-  <img src="../../../assets/mock/1.jpg" alt="">
+  <img [src]="product.getImageSrc()" alt="">
 </figure>
 <div class="product-info">
   <h3>{{ product.getTitle() }}</h3>
   <div class="product-description">
-    <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aliquam
-                    debitis delectus dolores.</span>
-    </p>
+    <p>{{ product.getDescription() }}</p>
   </div>
   <ul class="product-options">
     <li>

@@ -7,19 +7,32 @@ export interface Category {
   }
 }
 
-export interface ProductRaw {
+export interface Product {
   id: number
+  category_id: number
   data: {
     title: string
+    description: string
+    image: string
   }
 }
 
-export class Product {
+export class ProductWrapper {
 
-  constructor(private raw: ProductRaw) {}
-
-  getTitle(): string {
-    return this.raw.data.title
+  constructor(
+    private product: Product) {
   }
 
+  getTitle(): string {
+    return this.product.data.title
+  }
+
+  getDescription(): string {
+    return this.product.data.description
+  }
+
+  getImageSrc(): string {
+    // todo replace
+    return '../../../assets/mock/' + this.product.data.image
+  }
 }

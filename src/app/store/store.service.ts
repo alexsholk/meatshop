@@ -3,7 +3,7 @@ import {Observable} from 'rxjs'
 import {HttpClient, HttpParams} from '@angular/common/http'
 import {environment} from '../../environments/environment'
 import {map, shareReplay} from 'rxjs/operators'
-import {Category, Product, ProductRaw} from './types'
+import {Category, ProductWrapper, Product} from './types'
 
 @Injectable({
   providedIn: 'root'
@@ -21,16 +21,16 @@ export class StoreService {
     return this.categories$
   }
 
-  getProductsByCategoryId(categoryId: number): Observable<Product[]> {
+  getProductsByCategoryId(categoryId: number): Observable<ProductWrapper[]> {
     const params = new HttpParams().set('category_id', categoryId.toString())
-    return this.httpClient.get<ProductRaw[]>(`${environment.apiUrl}/products`, {params})
+    return this.httpClient.get<Product[]>(`${environment.apiUrl}/products`, {params})
       .pipe(
-        map(res => {
-          const o = []
-          for (const raw of res) {
-            o.push(new Product(raw))
+        map(products => {
+          const productWrappers = []
+          for (const product of products) {
+            productWrappers.push(new ProductWrapper(product))
           }
-          return o
+          return productWrappers
         }),
         shareReplay()
       )
