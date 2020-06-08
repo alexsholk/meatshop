@@ -4,7 +4,7 @@ import {StoreService} from '../store/store.service'
 import {StateService} from '../store/state.service'
 
 @Component({
-  selector: '.main-header',
+  selector: '[app-header]',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   encapsulation: ViewEncapsulation.None
