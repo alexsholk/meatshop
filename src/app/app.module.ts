@@ -11,6 +11,7 @@ import {HtmlComponent} from './html/html.component'
 import {OrderComponent} from './order/order.component'
 import {HttpClientModule} from '@angular/common/http'
 import {CartComponent} from './store/cart/cart.component'
+import {ProductComponent} from './store/product/product.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {CartComponent} from './store/cart/cart.component'
     StoreComponent,
     HtmlComponent,
     OrderComponent,
-    CartComponent
+    CartComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
