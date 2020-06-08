@@ -1,8 +1,11 @@
 <div class="details">
   <h3 class="details-header">Корзина
-    <button class="open-close-btn fa fa-angle-up"></button>
+    <button class="open-close-btn fa"
+            [ngClass]="{'fa-angle-up': isOpen, 'fa-angle-down': !isOpen}"
+            (click)="toggleCartView()">
+    </button>
   </h3>
-  <ul>
+  <ul *ngIf="isOpen">
     <li *ngFor="let i of [].constructor(3)">
       <button class="remove-btn">&times;</button>
       <img src="../../../assets/mock/1.jpg" alt="">

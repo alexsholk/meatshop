@@ -5,11 +5,16 @@ import {CartService} from './cart.service'
   selector: '.fixed-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class CartComponent {
+  public isOpen = true
 
   constructor(
     public cart: CartService) {
+  }
+
+  toggleCartView() {
+    this.isOpen = !this.isOpen
   }
 }
