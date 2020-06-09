@@ -9,7 +9,7 @@ import {ProductWrapper} from '../types'
 })
 export class ProductComponent implements OnInit {
   @Input() product: ProductWrapper
-  @HostBinding('class.chosen') isChosen: boolean
+  @HostBinding('class.active') isChosen: boolean
   public isOptionsOpen = false
 
   constructor(private renderer: Renderer2) {
