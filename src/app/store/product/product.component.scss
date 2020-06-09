@@ -172,6 +172,10 @@
 
       .total-price {
         flex-grow: 1;
+
+        .price-current {
+          display: none;
+        }
       }
 
       .choose-btn {
@@ -220,6 +224,16 @@
       }
 
       .product-controls {
+        .total-price {
+          .price-range {
+            display: none;
+          }
+
+          .price-current {
+            display: block;
+          }
+        }
+
         .choose-btn {
           display: none;
         }
