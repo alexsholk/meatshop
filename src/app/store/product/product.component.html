@@ -43,6 +43,6 @@
   <div class="product-controls">
     <div class="total-price">от <strong>560</strong>&nbsp;&#8381;/кг</div>
     <button class="rounded-button choose-btn" (click)="choose()">Выбрать</button>
-    <button class="rounded-button add-to-cart-btn">В корзину</button>
+    <button class="rounded-button add-to-cart-btn" (click)="cart.addItem(product)">В корзину</button>
   </div>
 </div>

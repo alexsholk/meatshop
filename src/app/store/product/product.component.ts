@@ -1,5 +1,6 @@
 import {Component, HostBinding, HostListener, Input, OnInit, Renderer2, ViewEncapsulation} from '@angular/core'
 import {ProductWrapper} from '../types'
+import {CartService} from '../cart/cart.service'
 
 @Component({
   selector: '[app-product]',
@@ -12,7 +13,9 @@ export class ProductComponent implements OnInit {
   @HostBinding('class.active') isChosen: boolean
   public isOptionsOpen = false
 
-  constructor(private renderer: Renderer2) {
+  constructor(
+    private renderer: Renderer2,
+    public cart: CartService) {
   }
 
   @HostListener('window:resize', ['$event.target'])

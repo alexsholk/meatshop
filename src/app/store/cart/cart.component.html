@@ -4,27 +4,34 @@
           [ngClass]="{'fa-angle-up': isOpen, 'fa-angle-down': !isOpen}">
     </span>
   </h3>
-  <ul *ngIf="isOpen">
-    <li *ngFor="let i of [].constructor(3)">
-      <button class="remove-btn">&times;</button>
-      <img src="../../../assets/mock/1.jpg" alt="">
-      <div class="cart-item-info">
-        <h4>Грудинка</h4>
-        <div class="description">
-          <p>
-            Нарезка: куски (средний)<br>
-            Маринад: чесночный<br>
-            Специи: хмели-сунели<br>
-          </p>
-          <div class="item-price">480 &#8381;</div>
+  <ng-container *ngIf="cart.getItemsCount(); else emptyCart">
+    <ul *ngIf="isOpen">
+      <li *ngFor="let item of cart.getItems(); index as i">
+        <button class="remove-btn" (click)="cart.removeItem(i)">&times;</button>
+        <img [src]="item.getImageSrc()" alt="">
+        <div class="cart-item-info">
+          <h4>{{ item.getTitle() }}</h4>
+          <div class="description">
+            <p>
+              Нарезка: куски (средний)<br>
+              Маринад: чесночный<br>
+              Специи: хмели-сунели<br>
+            </p>
+            <div class="item-price">480 &#8381;</div>
+          </div>
         </div>
-      </div>
-    </li>
-  </ul>
-  <div class="summary">
-    <span>Сумма заказа:</span> <strong>2580 &#8381;</strong>
-  </div>
-  <a routerLink="/order" class="cart-link">Оформить</a>
+      </li>
+    </ul>
+    <div class="summary">
+      <span>Сумма заказа:</span> <strong>2580 &#8381;</strong>
+    </div>
+    <a routerLink="/order" class="cart-link">Оформить</a>
+  </ng-container>
+  <ng-template #emptyCart>
+    <div class="empty-cart">
+      <p>Нет товаров</p>
+    </div>
+  </ng-template>
 </div>
 <span class="fa fa-shopping-cart"></span>
 <span class="total-price">2580 &#8381;</span>
