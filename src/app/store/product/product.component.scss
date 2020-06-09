@@ -309,6 +309,16 @@
       }
 
       .product-controls {
+        .total-price {
+          .price-range {
+            display: none;
+          }
+
+          .price-current {
+            display: block;
+          }
+        }
+
         .choose-btn {
           display: none;
         }
