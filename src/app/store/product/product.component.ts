@@ -10,6 +10,7 @@ import {ProductWrapper} from '../types'
 export class ProductComponent implements OnInit {
   @Input() product: ProductWrapper
   @HostBinding('class.chosen') isChosen: boolean
+  public isOptionsOpen = false
 
   constructor(private renderer: Renderer2) {
   }
@@ -26,5 +27,9 @@ export class ProductComponent implements OnInit {
   unChoose() {
     this.isChosen = false
     this.renderer.removeClass(document.body, 'modal-open')
+  }
+
+  openOptions() {
+    this.isOptionsOpen = true
   }
 }

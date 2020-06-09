@@ -12,9 +12,32 @@
   <ul class="product-options" *ngIf="product.options$ | async as options">
     <li *ngFor="let option of options">
       <strong>{{ option.title }}:</strong>
-      <a (click)="product.setOptionValue(option.code, option.value + 1)">{{ option.values[option.value].title }}</a>
+      <a (click)="openOptions()">{{ option.values[option.value].title }}</a>
     </li>
   </ul>
+  <div class="option-overlay" [class.active]="isOptionsOpen">
+    <div class="option-wrapper">
+      <h3>Маринад</h3>
+      <div class="values-wrapper">
+        <ul>
+          <li class="active"><a>Чесночный</a></li>
+          <li><a>Чесночный</a></li>
+          <li><a>Чесночный</a></li>
+          <li><a>Чесночный</a></li>
+          <li><a>Чесночный</a></li>
+          <li><a>Чесночный</a></li>
+          <li><a>Чесночный</a></li>
+          <li><a>Чесночный</a></li>
+          <li><a>Чесночный</a></li>
+          <li><a>Чесночный</a></li>
+          <li><a>Чесночный</a></li>
+          <li><a>Чесночный</a></li>
+        </ul>
+      </div>
+      <div class="spacer"></div>
+      <button class="rounded-button ok-btn">Ок</button>
+    </div>
+  </div>
   <div class="product-quantity-container">
     <label>Количество</label>
     <button class="minus-btn disabled">-</button>

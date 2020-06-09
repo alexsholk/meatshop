@@ -1,6 +1,7 @@
 @import "../../../styles/variables";
 
 .product {
+  position: relative;
   display: flex;
   flex-flow: row nowrap;
   border-top: 2px solid $light;
@@ -12,6 +13,70 @@
 
   .nav-panel {
     display: none;
+  }
+
+  .rounded-button {
+    padding: 2*$basis 4*$basis;
+    background: $altAccent;
+    color: $white;
+    border-radius: 4*$basis;
+  }
+
+  .option-overlay {
+    display: none;
+
+    &.active {
+      display: flex;
+      flex-flow: column nowrap;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 5*$basis 4*$basis 8*$basis;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: $basis;
+    }
+
+    .option-wrapper {
+      display: flex;
+      flex-flow: column nowrap;
+      flex-grow: 1;
+      padding: 3*$basis 4*$basis;
+      background: $white;
+      border-radius: $basis;
+      box-shadow: $shadow;
+
+      h3 {
+        margin-bottom: 8*$basis;
+      }
+
+      .values-wrapper {
+        overflow-y: scroll;
+        max-height: 200px;
+
+        ul {
+          li {
+            cursor: pointer;
+            padding: 3*$basis 0;
+            border-bottom: 1px solid $light;
+
+            &.active {
+              a {
+                font-weight: bold;
+                color: $accent;
+                border-bottom: 1px solid $accent;
+              }
+            }
+          }
+        }
+      }
+
+      .spacer {
+        flex-grow: 1;
+      }
+
+    }
   }
 
   figure {
@@ -110,13 +175,6 @@
 
       .total-price {
         flex-grow: 1;
-      }
-
-      .rounded-button {
-        padding: 2*$basis 4*$basis;
-        background: $altAccent;
-        color: $white;
-        border-radius: 4*$basis;
       }
 
       .choose-btn {

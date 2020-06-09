@@ -128,7 +128,6 @@
     position: sticky;
     top: 63px + 3*$basis + 48px; // Header height + margins
     background: $white;
-    box-shadow: none;
     border-bottom: 4px solid $light;
 
     .details {
