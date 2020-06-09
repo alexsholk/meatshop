@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input, OnInit, Renderer2, ViewEncapsulation} from '@angular/core'
+import {Component, HostBinding, HostListener, Input, OnInit, Renderer2, ViewEncapsulation} from '@angular/core'
 import {ProductWrapper} from '../types'
 
 @Component({
@@ -13,6 +13,15 @@ export class ProductComponent implements OnInit {
   public isOptionsOpen = false
 
   constructor(private renderer: Renderer2) {
+  }
+
+  @HostListener('window:resize', ['$event.target'])
+  onWindowResize(event) {
+    if (event.innerWidth >= 600) {
+      this.unChoose()
+    } else {
+      this.isOptionsOpen = false
+    }
   }
 
   ngOnInit(): void {
