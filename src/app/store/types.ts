@@ -1,5 +1,3 @@
-import {BehaviorSubject} from 'rxjs'
-
 export interface Category {
   id: number
   parent_id?: number
@@ -39,23 +37,30 @@ export interface Product {
 }
 
 export class ProductWrapper {
-  public options$: BehaviorSubject<Option[]> = new BehaviorSubject<Option[]>([])
+  private static* iterateAllOptions(options: Option[]) {
+    for (const option of options) {
+      yield option
+      for (const value of option.values) {
+        if ('options' in value) {
+          yield* ProductWrapper.iterateAllOptions(value.options)
+        }
+      }
+    }
+  }
+
+  private static* iterateOptions(options: Option[]) {
+    for (const option of options) {
+      yield option
+      // Only if options has numeric value
+      if (typeof option.value === 'number' && 'options' in option.values[option.value]) {
+        yield* ProductWrapper.iterateAllOptions(option.values[option.value].options)
+      }
+    }
+  }
 
   constructor(
     private product: Product) {
-    this.options$.next([...this.iterateOptions(product.data.options)])
-  }
-
-  private* iterateOptions(options: Option[]) {
-    for (const option of options) {
-      yield option
-      if (option.value === undefined) {
-        option.value = 0
-      }
-      if (option.values.length && option.values[option.value]?.options) {
-        yield* this.iterateOptions(option.values[option.value].options)
-      }
-    }
+    this.selectDefault()
   }
 
   getTitle(): string {
@@ -71,12 +76,15 @@ export class ProductWrapper {
     return '../../../assets/mock/' + this.product.data.image
   }
 
-  setOptionValue(optionCode: string, value: number) {
-    for (const option of this.iterateOptions(this.product.data.options)) {
-      if (option.code === optionCode && option.values[value]) {
-        option.value = value
+  getOptions() {
+    return [...ProductWrapper.iterateOptions(this.product.data.options)]
+  }
+
+  private selectDefault() {
+    for (const option of ProductWrapper.iterateAllOptions(this.product.data.options)) {
+      if ('values' in option && option.values.length) {
+        option.value = 0
       }
     }
-    this.options$.next([...this.iterateOptions(this.product.data.options)])
   }
 }

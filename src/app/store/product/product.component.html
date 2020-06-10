@@ -9,26 +9,21 @@
   <div class="product-description">
     <p>{{ product.getDescription() }}</p>
   </div>
-  <ul class="product-options" *ngIf="product.options$ | async as options">
+  <ul class="product-options" *ngIf="product.getOptions() as options">
     <li *ngFor="let option of options">
       <strong>{{ option.title }}:</strong>
-      <a (click)="openOptions()">{{ option.values[option.value].title }}</a>
+      <a (click)="openOptions(option)">{{ option.values[option.value].title }}</a>
     </li>
   </ul>
-  <div class="option-overlay" [class.active]="isOptionsOpen">
+  <div class="option-overlay" [class.active]="isOptionsOpen" *ngIf="activeOption">
     <div class="option-wrapper">
-      <h3>Маринад</h3>
+      <h3>{{ activeOption.title }}</h3>
       <div class="values-wrapper">
         <ul>
-          <li class="active"><a>Чесночный</a></li>
-          <li><a>Чесночный</a></li>
-          <li><a>Чесночный</a></li>
-          <li><a>Чесночный</a></li>
-          <li><a>Чесночный</a></li>
-          <li><a>Чесночный</a></li>
-          <li><a>Чесночный</a></li>
-          <li><a>Чесночный</a></li>
-          <li><a>Чесночный</a></li>
+          <li *ngFor="let value of activeOption.values; index as i"
+              [class.active]="activeOption.value === i">
+            <a (click)="activeOption.value = i">{{ value.title }}</a>
+          </li>
         </ul>
       </div>
       <button class="rounded-button ok-btn" (click)="isOptionsOpen = false">Ок</button>

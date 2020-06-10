@@ -56,18 +56,27 @@
         ul {
           li {
             cursor: pointer;
-            padding: 3*$basis 0;
             border-bottom: 1px solid $light;
+            transition: .05s;
 
             &:last-child {
               border-bottom: none;
+            }
+
+            &:hover {
+              background: $light;
+            }
+
+            a {
+              display: block;
+              padding: 3*$basis 4*$basis;
+              transition: .05s;
             }
 
             &.active {
               a {
                 font-weight: bold;
                 color: $accent;
-                border-bottom: 1px solid $accent;
               }
             }
           }

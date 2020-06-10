@@ -1,5 +1,5 @@
 import {Component, HostBinding, HostListener, Input, OnInit, Renderer2, ViewEncapsulation} from '@angular/core'
-import {ProductWrapper} from '../types'
+import {Option, ProductWrapper} from '../types'
 import {CartService} from '../cart/cart.service'
 
 @Component({
@@ -12,6 +12,7 @@ export class ProductComponent implements OnInit {
   @Input() product: ProductWrapper
   @HostBinding('class.active') isChosen: boolean
   public isOptionsOpen = false
+  public activeOption: Option = null
 
   constructor(
     private renderer: Renderer2,
@@ -41,7 +42,8 @@ export class ProductComponent implements OnInit {
     this.renderer.removeClass(document.body, 'modal-open')
   }
 
-  openOptions() {
+  openOptions(option) {
+    this.activeOption = option
     this.isOptionsOpen = true
   }
 }
