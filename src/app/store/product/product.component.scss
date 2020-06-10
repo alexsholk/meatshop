@@ -197,6 +197,7 @@
 }
 
 .product.active {
+  //border-color: $accent; // temp
   @media (max-width: $small - 1px) {
     position: fixed;
     top: 0;

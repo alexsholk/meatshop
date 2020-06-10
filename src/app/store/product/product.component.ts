@@ -1,4 +1,4 @@
-import {Component, HostBinding, HostListener, Input, Renderer2, ViewEncapsulation} from '@angular/core'
+import {Component, HostBinding, Input, Renderer2, ViewEncapsulation} from '@angular/core'
 import {Option, ProductWrapper} from '../types'
 import {CartService} from '../cart/cart.service'
 
@@ -9,21 +9,17 @@ import {CartService} from '../cart/cart.service'
   encapsulation: ViewEncapsulation.None
 })
 export class ProductComponent {
-  @Input() product: ProductWrapper
-  @HostBinding('class.active') isActive: boolean
-  public activeOption: Option = null
 
   constructor(
     private renderer: Renderer2,
     private cart: CartService) {
   }
+  @Input() product: ProductWrapper
+  @HostBinding('class.active') isActive: boolean
+  public activeOption: Option = null
 
-  @HostListener('window:resize', ['$event.target'])
-  onWindowResize(event) {
-    if (event.innerWidth >= 600) {
-      // this.deactivate()
-    } else {
-    }
+  private static isSmallDisplay(): boolean {
+    return window.innerWidth < 600
   }
 
   activate() {
@@ -43,6 +39,9 @@ export class ProductComponent {
 
   closeOptions() {
     this.activeOption = null
+    if (!ProductComponent.isSmallDisplay()) {
+      this.deactivate()
+    }
   }
 
   addToCart(product: ProductWrapper) {
