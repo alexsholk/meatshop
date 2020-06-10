@@ -1,5 +1,5 @@
 <div class="nav-panel">
-  <a (click)="unChoose()"><span class="back-btn fa fa-angle-left"></span>Назад</a>
+  <a (click)="deactivate()"><span class="back-btn fa fa-angle-left"></span>Назад</a>
 </div>
 <figure>
   <img [src]="product.getImageSrc()" alt="">
@@ -40,7 +40,7 @@
       <p class="price-range">от <strong>560</strong>&nbsp;&#8381;/кг</p>
       <p class="price-current"><strong>780</strong>&nbsp;&#8381;</p>
     </div>
-    <button class="rounded-button choose-btn" (click)="choose()">Выбрать</button>
-    <button class="rounded-button add-to-cart-btn" (click)="cart.addItem(product)">В корзину</button>
+    <button class="rounded-button choose-btn" (click)="activate()">Выбрать</button>
+    <button class="rounded-button add-to-cart-btn" (click)="addToCart(product)">В корзину</button>
   </div>
 </div>
