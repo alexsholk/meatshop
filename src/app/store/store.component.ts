@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core'
+import {Component, OnDestroy, OnInit, Renderer2, ViewEncapsulation} from '@angular/core'
 import {StoreService} from './store.service'
 import {StateService} from './state.service'
 import {ActivatedRoute, Router} from '@angular/router'
@@ -15,10 +15,12 @@ import {appAnimations} from '../app.animations'
 })
 export class StoreComponent implements OnInit, OnDestroy {
   public products$: Observable<ProductWrapper[]>
+  public activeProductId: number = null
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private renderer: Renderer2,
     public store: StoreService,
     public state: StateService) {
   }
@@ -46,5 +48,14 @@ export class StoreComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.state.setCurrentCategory(null)
+  }
+
+  activateProduct(id: number) {
+    this.activeProductId = id
+    if (id) {
+      this.renderer.addClass(document.body, 'modal-open')
+    } else {
+      this.renderer.removeClass(document.body, 'modal-open')
+    }
   }
 }

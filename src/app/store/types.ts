@@ -63,6 +63,10 @@ export class ProductWrapper {
     this.selectDefault()
   }
 
+  getId(): number {
+    return this.product.id
+  }
+
   getTitle(): string {
     return this.product.data.title
   }

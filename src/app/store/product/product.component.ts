@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input, Renderer2, ViewEncapsulation} from '@angular/core'
+import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core'
 import {Option, ProductWrapper} from '../types'
 import {CartService} from '../cart/cart.service'
 
@@ -11,11 +11,12 @@ import {CartService} from '../cart/cart.service'
 export class ProductComponent {
 
   constructor(
-    private renderer: Renderer2,
     private cart: CartService) {
   }
+
   @Input() product: ProductWrapper
-  @HostBinding('class.active') isActive: boolean
+  @Output() activateProduct: EventEmitter<number> = new EventEmitter<number>()
+
   public activeOption: Option = null
 
   private static isSmallDisplay(): boolean {
@@ -23,13 +24,11 @@ export class ProductComponent {
   }
 
   activate() {
-    this.isActive = true
-    this.renderer.addClass(document.body, 'modal-open')
+    this.activateProduct.emit(this.product.getId())
   }
 
   deactivate() {
-    this.isActive = false
-    this.renderer.removeClass(document.body, 'modal-open')
+    this.activateProduct.emit(null)
   }
 
   openOptions(option: Option) {
@@ -39,6 +38,7 @@ export class ProductComponent {
 
   closeOptions() {
     this.activeOption = null
+    // On small display product must remain active
     if (!ProductComponent.isSmallDisplay()) {
       this.deactivate()
     }

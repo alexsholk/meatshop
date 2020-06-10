@@ -197,7 +197,6 @@
 }
 
 .product.active {
-  //border-color: $accent; // temp
   @media (max-width: $small - 1px) {
     position: fixed;
     top: 0;
@@ -279,6 +278,10 @@
 }
 
 .option-overlay {
+  display: none;
+}
+
+.product.active .option-overlay {
   display: flex;
   flex-flow: column nowrap;
   align-items: stretch;

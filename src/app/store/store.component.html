@@ -9,7 +9,11 @@
           <h1>{{ category.data.title }}</h1>
         </div>
         <ul class="product-list" *ngIf="products$ | async as products">
-          <li class="product" app-product *ngFor="let product of products" [product]="product"></li>
+          <li class="product" app-product
+              *ngFor="let product of products" [product]="product"
+              [class.active]="product.getId() === activeProductId"
+              (activateProduct)="activateProduct($event)"
+          ></li>
         </ul>
       </div>
       <!-- /Product list -->
