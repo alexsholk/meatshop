@@ -11,7 +11,6 @@ import {CartService} from '../cart/cart.service'
 export class ProductComponent {
   @Input() product: ProductWrapper
   @HostBinding('class.active') isActive: boolean
-  public isOptionsOpen = false
   public activeOption: Option = null
 
   constructor(
@@ -22,9 +21,8 @@ export class ProductComponent {
   @HostListener('window:resize', ['$event.target'])
   onWindowResize(event) {
     if (event.innerWidth >= 600) {
-      this.deactivate()
+      // this.deactivate()
     } else {
-      this.isOptionsOpen = false
     }
   }
 
@@ -38,9 +36,13 @@ export class ProductComponent {
     this.renderer.removeClass(document.body, 'modal-open')
   }
 
-  openOptions(option) {
+  openOptions(option: Option) {
+    this.activate()
     this.activeOption = option
-    this.isOptionsOpen = true
+  }
+
+  closeOptions() {
+    this.activeOption = null
   }
 
   addToCart(product: ProductWrapper) {

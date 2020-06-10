@@ -15,7 +15,7 @@
       <a (click)="openOptions(option)">{{ option.values[option.value].title }}</a>
     </li>
   </ul>
-  <div class="option-overlay" [class.active]="isOptionsOpen" *ngIf="activeOption">
+  <div class="option-overlay" *ngIf="activeOption">
     <div class="option-wrapper">
       <h3>{{ activeOption.title }}</h3>
       <div class="values-wrapper">
@@ -26,7 +26,7 @@
           </li>
         </ul>
       </div>
-      <button class="rounded-button ok-btn" (click)="isOptionsOpen = false">Ок</button>
+      <button class="rounded-button ok-btn" (click)="closeOptions()">Ок</button>
     </div>
   </div>
   <div class="product-quantity-container">
