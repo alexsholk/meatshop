@@ -37,8 +37,8 @@
   </div>
   <div class="product-controls">
     <div class="total-price">
-      <p class="price-range">от <strong>560</strong>&nbsp;&#8381;/кг</p>
-      <p class="price-current"><strong>780</strong>&nbsp;&#8381;</p>
+      <p class="price-range">от <strong>{{ product.getMinPrice() }}</strong>&nbsp;&#8381;/кг</p>
+      <p class="price-current"><strong>{{ product.getPrice() }}</strong>&nbsp;&#8381;/кг</p>
     </div>
     <button class="rounded-button choose-btn" (click)="activate()">Выбрать</button>
     <button class="rounded-button add-to-cart-btn" (click)="addToCart(product)">В корзину</button>

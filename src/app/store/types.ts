@@ -22,6 +22,7 @@ export enum OptionType {
 
 export interface OptionValue {
   title: string
+  price?: number
   options: Option[]
 }
 
@@ -32,6 +33,7 @@ export interface Product {
     title: string
     description: string
     image: string
+    price?: number
     options: Option[]
   }
 }
@@ -94,6 +96,33 @@ export class ProductWrapper {
 
   getOptions() {
     return [...ProductWrapper.iterateOptions(this.product.data.options)]
+  }
+
+  getMinPrice(): number {
+    const prices: number[] = []
+    if (this.product.data.price) {
+      prices.push(this.product.data.price)
+    }
+    for (const option of ProductWrapper.iterateAllOptions(this.product.data.options)) {
+      for (const value of option.values) {
+        if (value.price) {
+          prices.push(value.price)
+        }
+      }
+    }
+    return Math.min(...prices)
+  }
+
+  getPrice(): number {
+    let price: number = this.product.data?.price || null
+    for (const option of ProductWrapper.iterateOptions(this.product.data.options)) {
+      if (typeof option.value === 'number'
+        && option.values[option.value].price) {
+        // override price
+        price = option.values[option.value].price
+      }
+    }
+    return price
   }
 
   selectDefault(): ProductWrapper {
