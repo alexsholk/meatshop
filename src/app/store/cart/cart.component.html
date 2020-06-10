@@ -13,9 +13,9 @@
           <h4>{{ item.getTitle() }}</h4>
           <div class="description">
             <p>
-              Нарезка: куски (средний)<br>
-              Маринад: чесночный<br>
-              Специи: хмели-сунели<br>
+              <ng-container *ngFor="let option of item.getOptions()">
+                {{ option.title }}: {{ option.values[option.value].title }}<br>
+              </ng-container>
             </p>
             <div class="item-price">480 &#8381;</div>
           </div>
