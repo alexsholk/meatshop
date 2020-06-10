@@ -46,6 +46,8 @@
 
     ul {
       margin-bottom: 2*$basis;
+      overflow-y: auto;
+      max-height: 50vh;
 
       li {
         position: relative;
