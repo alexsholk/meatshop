@@ -34,8 +34,14 @@ export interface Product {
     description: string
     image: string
     price?: number
+    quantity?: Quantity
     options: Option[]
   }
+}
+
+export interface Quantity {
+  unit: string
+  quantity: number
 }
 
 export class ProductWrapper {
@@ -125,6 +131,26 @@ export class ProductWrapper {
     return price
   }
 
+  increaseQuantity() {
+    this.product.data.quantity.quantity += 100
+  }
+
+  decreaseQuantity() {
+    this.product.data.quantity.quantity -= 100
+  }
+
+  getQuantity(): Quantity | null {
+    return this.product.data.quantity
+  }
+
+  formatQuantity(): string | null {
+    const quantity = this.product.data?.quantity
+    return quantity ? quantity.quantity + ' ' + quantity.unit : null
+  }
+
+  /**
+   * Select default (first) values of options
+   */
   selectDefault(): ProductWrapper {
     for (const option of ProductWrapper.iterateAllOptions(this.product.data.options)) {
       if ('values' in option && option.values.length) {
@@ -132,5 +158,35 @@ export class ProductWrapper {
       }
     }
     return this
+  }
+
+  /**
+   * Create default quantity object
+   */
+  setDefaultQuantity() {
+    if (this.product.data.quantity) {
+      return
+    }
+    this.product.data.quantity = {
+      quantity: 1000,
+      unit: 'г'
+    }
+    return this
+  }
+
+  isMinQuantity() {
+    return this.getQuantity().quantity === this.getMinQuantity()
+  }
+
+  isMaxQuantity() {
+    return this.getQuantity().quantity === this.getMaxQuantity()
+  }
+
+  private getMinQuantity() {
+    return 300 // todo change
+  }
+
+  private getMaxQuantity() {
+    return 15000
   }
 }

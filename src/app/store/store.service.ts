@@ -28,7 +28,7 @@ export class StoreService {
         map(products => {
           const productWrappers = []
           for (const product of products) {
-            productWrappers.push((new ProductWrapper(product)).selectDefault())
+            productWrappers.push((new ProductWrapper(product)).selectDefault().setDefaultQuantity())
           }
           return productWrappers
         }),

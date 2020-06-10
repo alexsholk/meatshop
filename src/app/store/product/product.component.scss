@@ -87,7 +87,7 @@
       .quantity {
         font-size: 16px;
         text-align: center;
-        width: 10*$basis;
+        width: 60px;
         margin: 0 $basis;
         height: 6*$basis;
         border: none;
@@ -104,7 +104,7 @@
         text-align: center;
         font-weight: bold;
 
-        &.disabled {
+        &[disabled] {
           background: desaturate($neutral, 100%);
         }
       }

@@ -31,9 +31,9 @@
   </div>
   <div class="product-quantity-container">
     <label>Количество</label>
-    <button class="minus-btn disabled">-</button>
-    <input type="text" class="quantity" value="1">
-    <button class="plus-btn">+</button>
+    <button class="minus-btn" (click)="product.decreaseQuantity()" [disabled]="product.isMinQuantity()">-</button>
+    <input type="text" class="quantity" [value]="product.formatQuantity()" readonly>
+    <button class="plus-btn" (click)="product.increaseQuantity()" [disabled]="product.isMaxQuantity()">+</button>
   </div>
   <div class="product-controls">
     <div class="total-price">
