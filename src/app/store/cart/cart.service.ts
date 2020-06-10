@@ -12,7 +12,7 @@ export class CartService {
   }
 
   addItem(product: ProductWrapper) {
-    this.items.push(product)
+    this.items.push(product.clone())
     this.saveCart()
   }
 

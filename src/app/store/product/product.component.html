@@ -12,7 +12,7 @@
   <ul class="product-options" *ngIf="product.getOptions() as options">
     <li *ngFor="let option of options">
       <strong>{{ option.title }}:</strong>
-      <a (click)="openOptions(option)">{{ option.values[option.value].title }}</a>
+      <a (click)="openOptions(option)">{{ getOptionValue(option)?.title || 'Не выбрано' }}</a>
     </li>
   </ul>
   <div class="option-overlay" *ngIf="activeOption">

@@ -60,7 +60,10 @@ export class ProductWrapper {
 
   constructor(
     private product: Product) {
-    this.selectDefault()
+  }
+
+  clone() {
+    return new ProductWrapper(JSON.parse(JSON.stringify(this.product)))
   }
 
   getId(): number {
@@ -84,11 +87,12 @@ export class ProductWrapper {
     return [...ProductWrapper.iterateOptions(this.product.data.options)]
   }
 
-  private selectDefault() {
+  selectDefault(): ProductWrapper {
     for (const option of ProductWrapper.iterateAllOptions(this.product.data.options)) {
       if ('values' in option && option.values.length) {
         option.value = 0
       }
     }
+    return this
   }
 }

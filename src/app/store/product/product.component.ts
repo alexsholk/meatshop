@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core'
-import {Option, ProductWrapper} from '../types'
+import {Option, OptionValue, ProductWrapper} from '../types'
 import {CartService} from '../cart/cart.service'
 
 @Component({
@@ -47,5 +47,11 @@ export class ProductComponent {
   addToCart(product: ProductWrapper) {
     this.cart.addItem(product)
     this.deactivate()
+  }
+
+  getOptionValue(option: Option): OptionValue | void {
+    if (option.value !== undefined && option.value !== null) {
+      return option.values[option.value]
+    }
   }
 }

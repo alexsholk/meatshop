@@ -3,7 +3,7 @@ import {Observable} from 'rxjs'
 import {HttpClient, HttpParams} from '@angular/common/http'
 import {environment} from '../../environments/environment'
 import {map, shareReplay} from 'rxjs/operators'
-import {Category, ProductWrapper, Product} from './types'
+import {Category, Product, ProductWrapper} from './types'
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class StoreService {
         map(products => {
           const productWrappers = []
           for (const product of products) {
-            productWrappers.push(new ProductWrapper(product))
+            productWrappers.push((new ProductWrapper(product)).selectDefault())
           }
           return productWrappers
         }),
