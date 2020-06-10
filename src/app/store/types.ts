@@ -58,12 +58,21 @@ export class ProductWrapper {
     }
   }
 
+  public static deserialize(data: string): ProductWrapper {
+    const product = JSON.parse(data)
+    return new ProductWrapper(product)
+  }
+
   constructor(
     private product: Product) {
   }
 
   clone() {
-    return new ProductWrapper(JSON.parse(JSON.stringify(this.product)))
+    return ProductWrapper.deserialize(this.serialize())
+  }
+
+  serialize() {
+    return JSON.stringify(this.product)
   }
 
   getId(): number {

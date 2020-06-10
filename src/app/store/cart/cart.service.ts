@@ -8,7 +8,7 @@ export class CartService {
   items: ProductWrapper[] = []
 
   constructor() {
-    // this.loadCart()
+    this.loadCart()
   }
 
   addItem(product: ProductWrapper) {
@@ -30,11 +30,22 @@ export class CartService {
   }
 
   private saveCart() {
-    // localStorage.setItem('cart', JSON.stringify(this.items))
+    const data = []
+    for (const item of this.items) {
+      data.push(item.serialize())
+    }
+    localStorage.setItem('cart', JSON.stringify(data))
   }
 
   private loadCart() {
-    this.items = JSON.parse(localStorage.getItem('cart')) || []
-    console.log(this.items)
+    try {
+      this.items = []
+      const data = JSON.parse(localStorage.getItem('cart')) || []
+      for (const row of data) {
+        this.items.push(ProductWrapper.deserialize(row))
+      }
+    } catch (e) {
+      localStorage.removeItem('cart')
+    }
   }
 }
