@@ -45,7 +45,7 @@ export interface Product {
 
 export interface Quantity {
   unit: Unit
-  quantity: number
+  amount: number
 }
 
 export enum InputType {
@@ -174,11 +174,25 @@ export class ProductWrapper {
   }
 
   increaseQuantity() {
-    this.product.data.quantity.quantity += 100
+    const quantity = this.getQuantity()
+    const step = this.getQuantityStep()
+    const max = this.getMaxQuantity()
+    if (quantity.amount + step > max) {
+      quantity.amount = max
+    } else {
+      quantity.amount += step
+    }
   }
 
   decreaseQuantity() {
-    this.product.data.quantity.quantity -= 100
+    const quantity = this.getQuantity()
+    const step = this.getQuantityStep()
+    const min = this.getMinQuantity()
+    if (quantity.amount - step < min) {
+      quantity.amount = min
+    } else {
+      quantity.amount -= step
+    }
   }
 
   getQuantity(): Quantity | null {
@@ -187,7 +201,7 @@ export class ProductWrapper {
 
   formatQuantity(): string | null {
     const quantity = this.product.data?.quantity
-    return quantity ? quantity.quantity + ' ' + quantity.unit : null
+    return quantity ? quantity.amount + ' ' + quantity.unit : null
   }
 
   /**
@@ -207,18 +221,18 @@ export class ProductWrapper {
    */
   setDefaultQuantity() {
     this.product.data.quantity = {
-      quantity: this.getDefaultQuantity(),
+      amount: this.getDefaultQuantity(),
       unit: this.getQuantityUnit()
     }
     return this
   }
 
   isMinQuantity() {
-    return this.getQuantity().quantity === this.getMinQuantity()
+    return this.getQuantity().amount === this.getMinQuantity()
   }
 
   isMaxQuantity() {
-    return this.getQuantity().quantity === this.getMaxQuantity()
+    return this.getQuantity().amount === this.getMaxQuantity()
   }
 
   private getMinQuantity() {
