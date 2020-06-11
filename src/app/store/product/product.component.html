@@ -25,7 +25,7 @@
           </li>
           <li *ngFor="let value of activeOption.values; index as i"
               [class.active]="activeOption.value === i">
-            <a (click)="activeOption.value = i">{{ value.title }}</a>
+            <a (click)="product.setOptionValue(activeOption, i)">{{ value.title }}</a>
           </li>
         </ul>
       </div>

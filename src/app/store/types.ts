@@ -199,9 +199,30 @@ export class ProductWrapper {
     return this.product.data.quantity
   }
 
-  formatQuantity(): string | null {
-    const quantity = this.product.data?.quantity
-    return quantity ? quantity.amount + ' ' + quantity.unit : null
+  formatQuantity(): string {
+    const quantity = this.product.data.quantity
+    if (quantity.unit === Unit.g && quantity.amount > 1000) {
+      return (quantity.amount / 1000) + ' ' + Unit.kg
+    }
+
+    return quantity.amount + ' ' + quantity.unit
+  }
+
+  /**
+   * Set option value
+   */
+  setOptionValue(option: Option, value: number | null) {
+    if (value === null || option.values[value]) {
+      const previousInputType = this.getInputType()
+      option.value = value
+      const nextInputType = this.getInputType()
+      // If input type changed - set default quantity
+      if (previousInputType !== nextInputType) {
+        this.setDefaultQuantity()
+      }
+    } else {
+      throw new Error('Invalid option value ' + value)
+    }
   }
 
   /**
