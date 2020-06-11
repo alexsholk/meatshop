@@ -191,6 +191,16 @@ export class ProductWrapper {
     return baseCost
   }
 
+  getWeight(): number {
+    const amount = this.getQuantity().amount
+    switch (this.getInputType()) {
+      case InputType.weight:
+        return amount
+      case InputType.count:
+        return amount * this.getOptionValueWeight()
+    }
+  }
+
   getOptionValueWeight(): number | null {
     let weight: number = null
     for (const option of ProductWrapper.iterateOptions(this.product.data.options)) {
