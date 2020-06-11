@@ -20,13 +20,13 @@
                 </ng-container>
               </ng-container>
             </p>
-            <div class="item-price">480 &#8381;</div>
+            <div class="item-price">{{ item.getTotalCost() | number }} &#8381;</div>
           </div>
         </div>
       </li>
     </ul>
     <div class="summary">
-      <span>Сумма заказа:</span> <strong>2580 &#8381;</strong>
+      <span>Сумма заказа:</span> <strong>{{ cart.getItemsCost() | number }} &#8381;</strong>
     </div>
     <a routerLink="/order" class="cart-link">Оформить</a>
   </ng-container>
@@ -37,4 +37,4 @@
   </ng-template>
 </div>
 <span class="fa fa-shopping-cart"></span>
-<span class="total-price">2580 &#8381;</span>
+<span class="total-cost">{{ cart.getItemsCost() | number }} &#8381;</span>

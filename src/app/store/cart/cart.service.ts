@@ -29,6 +29,14 @@ export class CartService {
     return this.items.length
   }
 
+  getItemsCost(): number {
+    let cost = 0
+    for (const item of this.items) {
+      cost += item.getTotalCost()
+    }
+    return cost
+  }
+
   private saveCart() {
     const data = []
     for (const item of this.items) {

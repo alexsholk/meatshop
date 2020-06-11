@@ -116,7 +116,7 @@
       align-items: baseline;
       justify-content: stretch;
 
-      .total-price {
+      .total-cost {
         flex-grow: 1;
 
         .total-cost {
@@ -170,7 +170,7 @@
       }
 
       .product-controls {
-        .total-price {
+        .total-cost {
           .price-range {
             display: none;
           }
@@ -255,7 +255,7 @@
       }
 
       .product-controls {
-        .total-price {
+        .total-cost {
           .price-range {
             display: none;
           }
