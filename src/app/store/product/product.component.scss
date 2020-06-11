@@ -119,7 +119,7 @@
       .total-price {
         flex-grow: 1;
 
-        .price-current {
+        .total-cost {
           display: none;
         }
       }
@@ -175,7 +175,7 @@
             display: none;
           }
 
-          .price-current {
+          .total-cost {
             display: block;
           }
         }
@@ -260,7 +260,7 @@
             display: none;
           }
 
-          .price-current {
+          .total-cost {
             display: block;
           }
         }

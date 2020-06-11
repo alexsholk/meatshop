@@ -26,6 +26,7 @@ export interface OptionValue {
   title: string
   price?: number
   input_type?: InputType
+  weight?: number
   options: Option[]
 }
 
@@ -171,6 +172,35 @@ export class ProductWrapper {
       }
     }
     return price
+  }
+
+  getBaseCost(): number {
+    const amount = this.getQuantity().amount
+    const price = this.getPrice()
+    switch (this.getInputType()) {
+      case InputType.weight:
+        return price * amount / 1000
+      case InputType.count:
+        return price * amount * this.getOptionValueWeight() / 1000
+    }
+  }
+
+  getTotalCost(): number {
+    const baseCost = this.getBaseCost()
+    // todo + addons cost
+    return baseCost
+  }
+
+  getOptionValueWeight(): number | null {
+    let weight: number = null
+    for (const option of ProductWrapper.iterateOptions(this.product.data.options)) {
+      if (typeof option.value === 'number'
+        && option.values[option.value].weight) {
+        // override weight
+        weight = option.values[option.value].weight
+      }
+    }
+    return weight
   }
 
   increaseQuantity() {
