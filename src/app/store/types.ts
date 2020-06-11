@@ -1,3 +1,5 @@
+import {environment} from '../../environments/environment'
+
 export interface Category {
   id: number
   parent_id?: number
@@ -96,8 +98,7 @@ export class ProductWrapper {
   }
 
   getImageSrc(): string {
-    // todo replace
-    return '../../../assets/mock/' + this.product.data.image
+    return environment.assetsHost + this.product.data.image
   }
 
   getOptions() {
