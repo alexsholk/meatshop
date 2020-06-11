@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core'
-import {Option, OptionValue, ProductWrapper} from '../types'
+import {InputType, Option, OptionValue, ProductWrapper} from '../types'
 import {CartService} from '../cart/cart.service'
 import {interval, Observable, Subscription} from 'rxjs'
 
@@ -10,6 +10,7 @@ import {interval, Observable, Subscription} from 'rxjs'
   encapsulation: ViewEncapsulation.None
 })
 export class ProductComponent implements OnInit {
+  public inputType = InputType
 
   constructor(
     private cart: CartService) {
