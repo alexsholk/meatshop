@@ -12,19 +12,20 @@ export interface Category {
 export interface Option {
   code: string
   title: string
-  type: OptionType
+  type?: OptionType
   required: boolean
   values: OptionValue[]
   value?: number // synthetic
 }
 
 export enum OptionType {
-  select
+  select = 'select'
 }
 
 export interface OptionValue {
   title: string
   price?: number
+  input_type?: InputType
   options: Option[]
 }
 
@@ -36,14 +37,26 @@ export interface Product {
     description: string
     image: string
     price?: number
+    input_type?: InputType
     quantity?: Quantity
     options: Option[]
   }
 }
 
 export interface Quantity {
-  unit: string
+  unit: Unit
   quantity: number
+}
+
+export enum InputType {
+  weight = 'weight',
+  count = 'count'
+}
+
+export enum Unit {
+  pc = 'шт',
+  g = 'г',
+  kg = 'кг',
 }
 
 export class ProductWrapper {
@@ -103,6 +116,34 @@ export class ProductWrapper {
 
   getOptions() {
     return [...ProductWrapper.iterateOptions(this.product.data.options)]
+  }
+
+  /**
+   * Type of amount input (weight|count)
+   */
+  getInputType(): InputType {
+    let inputType = this.product.data.input_type || null
+    for (const option of ProductWrapper.iterateOptions(this.product.data.options)) {
+      if (typeof option.value === 'number') {
+        const value = option.values[option.value]
+        if (value?.input_type) {
+          inputType = option.values[option.value].input_type
+        }
+      }
+    }
+    return inputType
+  }
+
+  /**
+   * Label of amount input
+   */
+  getInputTypeLabel(): string {
+    switch (this.getInputType()) {
+      case InputType.count:
+        return 'Кол-во'
+      case InputType.weight:
+        return 'Вес'
+    }
   }
 
   getMinPrice(): number {
@@ -165,12 +206,9 @@ export class ProductWrapper {
    * Create default quantity object
    */
   setDefaultQuantity() {
-    if (this.product.data.quantity) {
-      return
-    }
     this.product.data.quantity = {
-      quantity: 1000,
-      unit: 'г'
+      quantity: this.getDefaultQuantity(),
+      unit: this.getQuantityUnit()
     }
     return this
   }
@@ -184,10 +222,47 @@ export class ProductWrapper {
   }
 
   private getMinQuantity() {
-    return 300 // todo change
+    switch (this.getInputType()) {
+      case InputType.count:
+        return 1
+      case InputType.weight:
+        return 500 // g
+    }
   }
 
   private getMaxQuantity() {
-    return 15000
+    switch (this.getInputType()) {
+      case InputType.count:
+        return 50
+      case InputType.weight:
+        return 10000 // g
+    }
+  }
+
+  private getDefaultQuantity() {
+    switch (this.getInputType()) {
+      case InputType.count:
+        return 1
+      case InputType.weight:
+        return 1000
+    }
+  }
+
+  private getQuantityStep() {
+    switch (this.getInputType()) {
+      case InputType.count:
+        return 1
+      case InputType.weight:
+        return 100 // g
+    }
+  }
+
+  private getQuantityUnit(): Unit {
+    switch (this.getInputType()) {
+      case InputType.count:
+        return Unit.pc
+      case InputType.weight:
+        return Unit.g
+    }
   }
 }
