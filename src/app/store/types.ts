@@ -14,6 +14,7 @@ export interface Option {
   title: string
   type?: OptionType
   required: boolean
+  mutually_exclusive?: number
   values: OptionValue[]
   value?: number // synthetic
 }
@@ -265,6 +266,16 @@ export class ProductWrapper {
     if (value === null || option.values[value]) {
       const previousInputType = this.getInputType()
       option.value = value
+      // Check mutually exclusive exclusive
+      if (option?.mutually_exclusive) {
+        const mutualCode = option.mutually_exclusive
+        for (const opt of ProductWrapper.iterateOptions(this.product.data.options)) {
+          if (opt !== option && opt?.mutually_exclusive === mutualCode) {
+            opt.value = null
+          }
+        }
+      }
+
       const nextInputType = this.getInputType()
       // If input type changed - set default quantity
       if (previousInputType !== nextInputType) {
@@ -280,7 +291,7 @@ export class ProductWrapper {
    */
   selectDefault(): ProductWrapper {
     for (const option of ProductWrapper.iterateAllOptions(this.product.data.options)) {
-      if ('values' in option && option.values.length) {
+      if ('values' in option && option.values.length && option.required) {
         option.value = 0
       }
     }
