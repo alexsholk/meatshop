@@ -45,14 +45,20 @@
           align-items: flex-end;
           padding-right: 2*$basis;
 
-          p {
+          .options {
             flex-grow: 1;
             font-size: 11px;
             line-height: 13px;
           }
 
-          .item-price {
-            text-align: right;
+          .controls-wrapper {
+            .product-quantity-container {
+              display: none;
+            }
+
+            .item-price {
+              text-align: right;
+            }
           }
         }
       }

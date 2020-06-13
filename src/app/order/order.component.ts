@@ -9,7 +9,6 @@ import {ProductWrapper} from '../store/types'
   encapsulation: ViewEncapsulation.None
 })
 export class OrderComponent {
-  public getOptionValue = ProductWrapper.getOptionValue
 
   constructor(
     public cart: CartService) {
