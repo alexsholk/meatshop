@@ -14,6 +14,7 @@ import {CartComponent} from './store/cart/cart.component'
 import {ProductComponent} from './store/product/product.component'
 import {FormComponent} from './order/form/form.component'
 import {QuantityControlComponent} from './store/product/quantity-control/quantity-control.component'
+import {ListComponent} from './store/cart/list/list.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {QuantityControlComponent} from './store/product/quantity-control/quantit
     CartComponent,
     ProductComponent,
     FormComponent,
-    QuantityControlComponent
+    QuantityControlComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core'
+import {Component, OnChanges, SimpleChanges, ViewEncapsulation} from '@angular/core'
 import {CartService} from '../store/cart/cart.service'
 import {ProductWrapper} from '../store/types'
 

@@ -1,0 +1,25 @@
+<ul>
+  <li *ngFor="let item of cart.getItems(); index as i">
+    <button class="remove-btn" (click)="cart.removeItem(i)">&times;</button>
+    <img [src]="item.getImageSrc()" alt="">
+    <div class="cart-item-info">
+      <h4>{{ item.getTitle() }}</h4>
+      <div class="description">
+        <p>
+          <ng-container *ngFor="let option of item.getOptions()">
+            <ng-container *ngIf="getOptionValue(option) as value">
+              {{ option.title }}: {{ value?.title || 'Не выбрано' }}<br>
+            </ng-container>
+          </ng-container>
+        </p>
+        <div class="item-price">
+          {{ item.getWeight() / 1000 | number }} кг <br>
+          <strong>{{ item.getTotalCost() | number }} &#8381;</strong>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+<div class="summary">
+  <span>Сумма заказа:</span> <strong>{{ cart.getItemsCost() | number }} &#8381;</strong>
+</div>
