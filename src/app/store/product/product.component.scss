@@ -6,6 +6,7 @@
   flex-flow: row nowrap;
   border-top: 2px solid $light;
   min-height: 136px;
+  background: $white;
 
   &:last-child {
     border-bottom: 2px solid $light;
@@ -72,44 +73,6 @@
       }
     }
 
-    .product-quantity-container {
-      display: none;
-      margin: 0 0 3*$basis;
-      flex-flow: row nowrap;
-      align-items: baseline;
-
-      label {
-        flex-grow: 1;
-        margin-right: 2*$basis;
-        text-align: right;
-      }
-
-      .quantity {
-        font-size: 16px;
-        text-align: center;
-        width: 60px;
-        margin: 0 $basis;
-        height: 6*$basis;
-        border: none;
-      }
-
-      .minus-btn,
-      .plus-btn {
-        border-radius: 4*$basis;
-        width: 6*$basis;
-        height: 6*$basis;
-        padding: $basis;
-        background: $neutral;
-        color: $white;
-        text-align: center;
-        font-weight: bold;
-
-        &[disabled] {
-          background: desaturate($neutral, 100%);
-        }
-      }
-    }
-
     .product-controls {
       display: flex;
       flex-flow: row nowrap;
@@ -138,7 +101,7 @@
   @media (min-width: $small) {
     margin: $basis;
     padding: 3*$basis 4*$basis;
-    width: calc(50% - 8px);
+    width: calc(50% - #{2*$basis});
     border: 1px solid $light;
     border-radius: $basis;
     flex-flow: column nowrap;
@@ -192,7 +155,7 @@
   }
 
   @media (min-width: $medium) {
-    width: calc(33.33% - 8px);
+    width: calc(33.33% - #{2*$basis});
   }
 }
 
@@ -241,9 +204,6 @@
 
     .product-info {
       padding: 0;
-
-      .product-description {
-      }
 
       .product-options {
         flex-grow: 1;

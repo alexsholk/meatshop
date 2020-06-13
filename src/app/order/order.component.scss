@@ -1,0 +1,129 @@
+@import "../../styles/variables";
+
+.order-container {
+  display: flex;
+  flex-flow: column nowrap;
+
+  .cart-wrapper,
+  .order-wrapper {
+    padding: 0 $basis 6*$basis;
+  }
+
+  h1 {
+    padding: 3*$basis 0;
+  }
+
+  .free-delivery {
+    border: 1px solid $accent;
+    padding: 2*$basis 3*$basis;
+    margin-bottom: 3*$basis;
+
+    h3 {
+      text-align: center;
+      color: $accent;
+      padding: 0 20px;
+    }
+  }
+
+  @media (min-width: $medium) {
+    flex-flow: row nowrap;
+
+    .left-side {
+      margin-right: 6*$basis;
+    }
+
+    .left-side,
+    .right-side {
+      flex-shrink: 0;
+      width: calc(50% - #{3*$basis});
+    }
+
+    .cart-wrapper,
+    .order-wrapper {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .order-wrapper {
+      position: sticky;
+      height: calc(100vh - #{63px + 3*$basis + 57px + 3*$basis});
+      overflow-y: auto;
+      top: 63px + 3*$basis;
+    }
+  }
+}
+
+.cart {
+  li {
+    position: relative;
+    padding: 2*$basis 3*$basis;
+    margin-bottom: $basis;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    border: 1px solid $light;
+    background: $white;
+
+    .remove-btn {
+      position: absolute;
+      right: $basis;
+      top: $basis;
+      padding: $basis;
+      width: 6*$basis;
+      height: 6*$basis;
+      font-size: 24px;
+      color: $altNeutral;
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      margin-right: 4*$basis;
+      object-fit: cover;
+    }
+
+    .cart-item-info {
+      flex-grow: 1;
+
+      h4 {
+        padding: 0 0 2*$basis;
+        font-size: 16px;
+      }
+
+      .description {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: stretch;
+
+        > p {
+          flex-grow: 1;
+          font-size: 12px;
+          margin-bottom: 2*$basis;
+        }
+
+        .controls-wrapper {
+          display: flex;
+          flex-flow: row wrap;
+          align-items: baseline;
+          justify-content: flex-end;
+        }
+
+        .product-quantity-container {
+          display: flex;
+          flex-grow: 1;
+          margin-right: 2*$basis;
+
+          label {
+            flex-grow: 0;
+            display: none;
+          }
+        }
+
+        .item-price {
+          text-align: right;
+          min-width: 60px;
+        }
+      }
+    }
+  }
+}

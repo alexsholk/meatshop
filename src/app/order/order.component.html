@@ -1,5 +1,38 @@
 <div class="container">
-  <div class="wrapper content-wrapper">
-    <h1>order works!</h1>
+  <div class="wrapper content-wrapper order-container">
+    <div class="left-side">
+      <div class="cart-wrapper">
+        <h1>Ваш заказ:</h1>
+        <div class="free-delivery">
+          <h3>Бесплатная&nbsp;доставка от&nbsp;2&nbsp;000&nbsp;руб.</h3>
+        </div>
+        <ul class="cart">
+          <li *ngFor="let item of cart.getItems(); index as i">
+            <button class="remove-btn" (click)="cart.removeItem(i)">&times;</button>
+            <img [src]="item.getImageSrc()" alt="">
+            <div class="cart-item-info">
+              <h4>{{ item.getTitle() }}</h4>
+              <div class="description">
+                <p>
+                  <ng-container *ngFor="let option of item.getOptions()">
+                    <ng-container *ngIf="getOptionValue(option) as value">
+                      {{ option.title }}: {{ value?.title || 'Не выбрано' }}<br>
+                    </ng-container>
+                  </ng-container>
+                </p>
+                <div class="controls-wrapper">
+                  <div class="product-quantity-container" app-quantity-control [product]="item"></div>
+                  <div class="item-price">
+                    <strong>{{ item.getTotalCost() | number }}&nbsp;&#8381;</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </ul>
+      </div>
+    </div>
+    <div class="right-side">
+      <div class="order-wrapper" app-order-form></div>
+    </div>
   </div>
 </div>

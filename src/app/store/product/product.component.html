@@ -32,23 +32,14 @@
       <button class="rounded-button ok-btn" (click)="closeOptions()">Ок</button>
     </div>
   </div>
-  <div class="product-quantity-container">
-    <label>{{ product.getInputTypeLabel() }}</label>
-    <button class="minus-btn" (click)="product.decreaseQuantity()" [disabled]="product.isMinQuantity()"
-            (mousedown)="decreaseTimerOn()" (mouseup)="timerOff()" (mouseleave)="timerOff()">-
-    </button>
-    <input type="text" class="quantity" [value]="product.formatQuantity()" readonly>
-    <button class="plus-btn" (click)="product.increaseQuantity()" [disabled]="product.isMaxQuantity()"
-            (mousedown)="increaseTimerOn()" (mouseup)="timerOff()" (mouseleave)="timerOff()">+
-    </button>
-  </div>
+  <div class="product-quantity-container" app-quantity-control [product]="product"></div>
   <div class="product-controls">
     <div class="total-cost">
-      <p class="price-range">от <strong>{{ product.getMinPrice() }}</strong>&nbsp;&#8381;/кг</p>
+      <p class="price-range">от <strong>{{ product.getMinPrice() | number }}&nbsp;&#8381;/кг</strong></p>
       <p class="total-cost">
-        <strong>{{ product.getTotalCost() }}</strong>&nbsp;&#8381;
+        <strong>{{ product.getTotalCost() | number }}&nbsp;&#8381;</strong>
         <ng-container *ngIf="product.getInputType() === inputType.count">
-          ({{ product.getWeight() / 1000 | number }} кг)
+          ({{ product.getWeight() / 1000 | number }}&nbsp;кг)
         </ng-container>
       </p>
     </div>

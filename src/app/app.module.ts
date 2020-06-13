@@ -12,6 +12,8 @@ import {OrderComponent} from './order/order.component'
 import {HttpClientModule} from '@angular/common/http'
 import {CartComponent} from './store/cart/cart.component'
 import {ProductComponent} from './store/product/product.component'
+import {FormComponent} from './order/form/form.component'
+import {QuantityControlComponent} from './store/product/quantity-control/quantity-control.component'
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {ProductComponent} from './store/product/product.component'
     HtmlComponent,
     OrderComponent,
     CartComponent,
-    ProductComponent
+    ProductComponent,
+    FormComponent,
+    QuantityControlComponent
   ],
   imports: [
     BrowserModule,

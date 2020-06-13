@@ -1,0 +1,66 @@
+<h1>Данные для заказа:</h1>
+<div class="order-form">
+  <div class=" contacts">
+    <h3>Контактная информация:</h3>
+    <input type="text" placeholder="Имя"><input type="text" placeholder="Ваш телефон">
+  </div>
+  <div class="region">
+    <h3>Выберите регион:</h3>
+    <label for="moscow">Москва</label>
+    <input type="radio" id="moscow" name="region">
+    <label for="moscow-region" class="active">Московская область</label>
+    <input type="radio" id="moscow-region" name="region">
+  </div>
+  <div class="adress">
+    <h3>Адрес доставки:</h3>
+    <input type="text" placeholder="Район">
+    <input type="text" placeholder="Улица">
+    <input type="text" placeholder="Дом">
+    <input type="text" placeholder="Квартира">
+  </div>
+  <div class="delivery-time">
+    <h3>Время доставки:</h3>
+    <label for="tommorow">Завтра</label>
+    <input type="radio" id="tommorow" name="day">
+
+    <label for="aftertommorow">Послезавтра</label>
+    <input type="radio" id="aftertommorow" name="day">
+
+    <select name="" id="">
+
+      <option value="">Утро</option>
+      <option value="">Обед</option>
+      <option value="">Вечер</option>
+    </select>
+  </div>
+  <div class="delivery-cost">
+
+    <label for="">Стоимость доставки:</label>
+    <span class="delivery-cost">
+                            500 руб.
+                        </span>
+  </div>
+  <div class="payment-method">
+    <div class="method">
+      <label for="online" class="active">Онлайн-оплата</label>
+      <input type="radio" id="online" name="payment">
+    </div>
+    <div class="method">
+      <label for="cart">Картой курьеру</label>
+      <input type="radio" id="cart" name="payment">
+    </div>
+    <div class="method">
+      <label for="nal">Наличными курьеру</label>
+      <input type="radio" id="nal" name="payment">
+    </div>
+  </div>
+  <div class="hands-free-delivery">
+    <label for="handsfree"> Бесконтактная доставка </label> <input type="checkbox" id="handsfree"
+                                                                   name="hands-free">
+  </div>
+  <div class="agreement">
+    <label for="agree"> Даю согласие на <a href=""> обработку персональных данных </a></label> <input
+    type="checkbox" id="agree" name="agreement">
+  </div>
+  <button type="submit" class="ordernow">Оформить заказ</button>
+</div>

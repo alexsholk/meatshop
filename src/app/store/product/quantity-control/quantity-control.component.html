@@ -1,0 +1,8 @@
+<label>{{ product.getInputTypeLabel() }}</label>
+<button class="minus-btn" (click)="product.decreaseQuantity()" [disabled]="product.isMinQuantity()"
+        (mousedown)="decreaseTimerOn()" (mouseup)="timerOff()" (mouseleave)="timerOff()">-
+</button>
+<input type="text" class="quantity" [value]="product.formatQuantity()" readonly>
+<button class="plus-btn" (click)="product.increaseQuantity()" [disabled]="product.isMaxQuantity()"
+        (mousedown)="increaseTimerOn()" (mouseup)="timerOff()" (mouseleave)="timerOff()">+
+</button>

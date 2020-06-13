@@ -89,6 +89,12 @@ export class ProductWrapper {
     return new ProductWrapper(product)
   }
 
+  public static getOptionValue(option: Option): OptionValue | null {
+    if (option.value !== undefined && option.value !== null) {
+      return option.values[option.value]
+    }
+  }
+
   constructor(
     private product: Product) {
   }

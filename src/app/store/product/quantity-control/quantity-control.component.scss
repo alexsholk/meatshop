@@ -1,0 +1,39 @@
+@import "../../../../styles/variables";
+
+.product-quantity-container {
+  display: none;
+  margin: 0 0 3*$basis;
+  flex-flow: row nowrap;
+  align-items: baseline;
+
+  label {
+    flex-grow: 1;
+    margin-right: 2*$basis;
+    text-align: right;
+  }
+
+  .quantity {
+    font-size: 16px;
+    text-align: center;
+    width: 60px;
+    margin: 0 $basis;
+    height: 6*$basis;
+    border: none;
+  }
+
+  .minus-btn,
+  .plus-btn {
+    border-radius: 4*$basis;
+    width: 6*$basis;
+    height: 6*$basis;
+    padding: $basis;
+    background: $neutral;
+    color: $white;
+    text-align: center;
+    font-weight: bold;
+
+    &[disabled] {
+      background: desaturate($neutral, 100%);
+    }
+  }
+}
