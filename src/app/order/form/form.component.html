@@ -1,95 +1,98 @@
 <h1>Данные для заказа:</h1>
 <div class="order-form mat-typography">
-  <div class="form-group contacts">
-    <h3>Контактная информация:</h3>
-    <div class="form-row">
-      <mat-form-field appearance="outline">
-        <mat-label>Имя</mat-label>
-        <input matInput placeholder="Имя" value="">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Телефон</mat-label>
-        <input matInput placeholder="Телефон" value="">
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="form-group region">
-    <h3>Выберите регион:</h3>
-    <div class="form-row">
-      <mat-radio-group aria-label="Регион">
-        <mat-radio-button value="1">Москва</mat-radio-button>
-        <mat-radio-button value="2">Московская область</mat-radio-button>
-      </mat-radio-group>
-    </div>
-  </div>
-  <div class="form-group address">
-    <h3>Адрес доставки:</h3>
-    <div class="form-row">
-      <mat-form-field class="example-full-width">
-        <input type="text"
-               placeholder="Pick one"
-               aria-label="Number"
-               matInput
-               [formControl]="myControl"
-               [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let option of options" [value]="option">
-            {{option}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Улица</mat-label>
-        <input matInput placeholder="Улица" value="">
-      </mat-form-field>
-    </div>
-    <div class="form-row">
-      <mat-form-field appearance="outline">
-        <mat-label>Дом</mat-label>
-        <input matInput placeholder="Дом" value="">
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Квартира</mat-label>
-        <input matInput placeholder="Квартира" value="">
-      </mat-form-field>
-    </div>
-  </div>
-  <div class="form-group delivery-time">
-    <h3>Время доставки:</h3>
-    <div class="form-row">
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="1">Завтра</mat-radio-button>
-        <mat-radio-button value="2">Послезавтра</mat-radio-button>
-      </mat-radio-group>
-      <mat-form-field style="flex-grow: 0">
-        <mat-label>Время</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let time of times" [value]="time.value">
-            {{ time.viewValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="form-group payment-method">
-      <h3>Способ оплаты:</h3>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group contacts">
+      <h3>Контактная информация:</h3>
       <div class="form-row">
-        <mat-radio-group aria-label="Select an option">
-          <mat-radio-button value="1">Онлайн-оплата</mat-radio-button>
-          <mat-radio-button value="2">Картой курьеру</mat-radio-button>
-          <mat-radio-button value="3">Наличными курьеру</mat-radio-button>
+        <mat-form-field appearance="outline">
+          <mat-label>Имя</mat-label>
+          <input matInput placeholder="Имя" formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Телефон</mat-label>
+          <input matInput placeholder="Телефон" formControlName="phone">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-group region">
+      <h3>Выберите регион:</h3>
+      <div class="form-row">
+        <mat-radio-group aria-label="Регион">
+          <mat-radio-button value="1">Москва</mat-radio-button>
+          <mat-radio-button value="2">Московская область</mat-radio-button>
         </mat-radio-group>
       </div>
     </div>
-    <div class="form-group hands-free-delivery">
+    <div class="form-group address">
+      <h3>Адрес доставки:</h3>
       <div class="form-row">
-        <mat-checkbox>Бесконтактная доставка</mat-checkbox>
+        <mat-form-field class="example-full-width">
+          <input type="text"
+                 placeholder="Pick one"
+                 aria-label="Number"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Улица</mat-label>
+          <input matInput placeholder="Улица" value="">
+        </mat-form-field>
       </div>
       <div class="form-row">
-        <mat-checkbox>Даю согласие на <a [routerLink]="['/p', 'pdpa']" target="_blank">обработку персональных данных</a></mat-checkbox>
+        <mat-form-field appearance="outline">
+          <mat-label>Дом</mat-label>
+          <input matInput placeholder="Дом" value="">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Квартира</mat-label>
+          <input matInput placeholder="Квартира" value="">
+        </mat-form-field>
       </div>
     </div>
-    <div class="form-group">
-      <button type="submit" class="order-now">Оформить заказ</button>
+    <div class="form-group delivery-time">
+      <h3>Время доставки:</h3>
+      <div class="form-row">
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button value="1">Завтра</mat-radio-button>
+          <mat-radio-button value="2">Послезавтра</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field style="flex-grow: 0">
+          <mat-label>Время</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let time of times" [value]="time.value">
+              {{ time.viewValue }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-group payment-method">
+        <h3>Способ оплаты:</h3>
+        <div class="form-row">
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Онлайн-оплата</mat-radio-button>
+            <mat-radio-button value="2">Картой курьеру</mat-radio-button>
+            <mat-radio-button value="3">Наличными курьеру</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div class="form-group hands-free-delivery">
+        <div class="form-row">
+          <mat-checkbox>Бесконтактная доставка</mat-checkbox>
+        </div>
+        <div class="form-row">
+          <mat-checkbox>Даю согласие на <a [routerLink]="['/p', 'pdpa']" target="_blank">обработку персональных
+            данных</a></mat-checkbox>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="order-now">Оформить заказ</button>
+      </div>
     </div>
-  </div>
+  </form>
 </div>

@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core'
-import {FormControl} from '@angular/forms'
+import {FormControl, FormGroup, Validators} from '@angular/forms'
 
 @Component({
   selector: '[app-order-form]',
@@ -8,6 +8,16 @@ import {FormControl} from '@angular/forms'
   encapsulation: ViewEncapsulation.None
 })
 export class FormComponent implements OnInit {
+  public form: FormGroup = new FormGroup({
+    name: new FormControl('', [
+      Validators.required
+    ]),
+    phone: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/\d+/)
+    ])
+  })
+
   public times = [
     {value: 'morning', viewValue: 'Утро'},
     {value: 'dinner', viewValue: 'Обед'},
@@ -23,4 +33,8 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  submit() {
+    console.log(this.form)
+    const formData = {...this.form.value}
+  }
 }
