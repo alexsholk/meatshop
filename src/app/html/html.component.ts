@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core'
+import {Component, OnDestroy, OnInit} from '@angular/core'
 import {Observable, Subscription} from 'rxjs'
 import {SimplePage} from './simple-page.type'
 import {ActivatedRoute, Router} from '@angular/router'
@@ -9,8 +9,6 @@ import {appAnimations} from '../app.animations'
 @Component({
   selector: 'app-html',
   templateUrl: './html.component.html',
-  styleUrls: ['./html.component.scss'],
-  encapsulation: ViewEncapsulation.None,
   animations: appAnimations
 })
 export class HtmlComponent implements OnInit, OnDestroy {

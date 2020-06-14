@@ -1,21 +1,26 @@
 <div class="container">
   <div class="wrapper content-wrapper order-container">
-    <div class="left-side">
-      <div class="cart-wrapper">
-        <h1>Ваш заказ:</h1>
-        <div class="free-delivery">
-          <h3>Бесплатная&nbsp;доставка от&nbsp;2&nbsp;000&nbsp;руб.</h3>
-        </div>
-        <app-cart-list class="cart-list" *ngIf="cart.getItemsCount(); else emptyCart"></app-cart-list>
-        <ng-template #emptyCart>
-          <div class="empty-cart">
-            <p>Нет товаров</p>
+    <ng-container *ngIf="cart.getItemsCount(); else emptyCart">
+      <div class="left-side">
+        <div class="cart-wrapper">
+          <h1>Ваш заказ:</h1>
+          <div class="free-delivery">
+            <h3>Бесплатная&nbsp;доставка от&nbsp;2&nbsp;000&nbsp;руб.</h3>
           </div>
-        </ng-template>
+          <app-cart-list class="cart-list"></app-cart-list>
+        </div>
       </div>
-    </div>
-    <div class="right-side">
-      <div class="order-wrapper" app-order-form></div>
-    </div>
+      <div class="right-side">
+        <div class="order-wrapper" app-order-form></div>
+      </div>
+    </ng-container>
+    <ng-template #emptyCart>
+      <div class="simple-page-wrapper">
+        <h1 class="simple-page-header">Корзина пуста</h1>
+        <div class="simple-page-content">
+          Перейдите в <a routerLink="/">каталог</a> чтобы выбрать товары.
+        </div>
+      </div>
+    </ng-template>
   </div>
 </div>
