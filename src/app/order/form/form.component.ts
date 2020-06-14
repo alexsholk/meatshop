@@ -7,6 +7,11 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core'
   encapsulation: ViewEncapsulation.None
 })
 export class FormComponent implements OnInit {
+  public times = [
+    {value: 'morning', viewValue: 'Утро'},
+    {value: 'dinner', viewValue: 'Обед'},
+    {value: 'evening', viewValue: 'Вечер'}
+  ]
 
   constructor() {
   }

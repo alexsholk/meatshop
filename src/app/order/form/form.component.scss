@@ -1,0 +1,57 @@
+@import "../../../styles/variables";
+
+.order-form {
+  .form-row {
+    margin: 0 -2*$basis;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+
+    > * {
+      margin: 0 2*$basis;
+      flex-grow: 1;
+    }
+
+    mat-radio-group {
+      flex-grow: 0;
+    }
+
+    mat-radio-button {
+      margin: 0 6*$basis 2*$basis 0;
+    }
+
+    mat-checkbox {
+      margin-bottom: 2*$basis;
+
+      .mat-checkbox-label {
+        white-space: normal;
+        line-height: 16px;
+      }
+    }
+
+    a[target="_blank"] {
+      color: $accent;
+      text-decoration: dashed;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 6*$basis;
+
+    h3 {
+      font: bold 14px/18px $defaultFont;
+      margin-bottom: 2*$basis;
+    }
+  }
+
+  .order-now {
+    display: block;
+    padding: 12px;
+    background: #f73b3b;
+    color: #fff;
+    text-align: center;
+    margin: 0 auto 8px;
+    border-radius: 24px;
+    width: 200px;
+  }
+}

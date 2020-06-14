@@ -48,6 +48,7 @@
       position: sticky;
       height: calc(100vh - #{63px + 3*$basis + 57px + 3*$basis});
       overflow-y: auto;
+      overflow-x: hidden;
       top: 63px + 3*$basis;
     }
   }

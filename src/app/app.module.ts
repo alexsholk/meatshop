@@ -15,6 +15,10 @@ import {ProductComponent} from './store/product/product.component'
 import {FormComponent} from './order/form/form.component'
 import {QuantityControlComponent} from './store/product/quantity-control/quantity-control.component'
 import {ListComponent} from './store/cart/list/list.component'
+import {MatSelectModule} from '@angular/material/select'
+import {MatRadioModule} from '@angular/material/radio'
+import {MatInputModule} from '@angular/material/input'
+import {MatCheckboxModule} from '@angular/material/checkbox'
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import {ListComponent} from './store/cart/list/list.component'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
