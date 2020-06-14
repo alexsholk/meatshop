@@ -1,12 +1,12 @@
 <h1>Данные для заказа:</h1>
 <div class="order-form">
-  <form [formGroup]="form" (ngSubmit)="submit()">
+  <form [formGroup]="cart.orderForm.form" (ngSubmit)="cart.submit()">
     <div class="form-group">
       <h3>Контактная информация:</h3>
       <div class="form-row">
         <mat-form-field appearance="outline">
           <mat-label>Имя</mat-label>
-          <input matInput placeholder="Имя" formControlName="name" required>
+          <input matInput placeholder="Имя" [formControlName]="'name'" required>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Телефон</mat-label>
@@ -21,7 +21,8 @@
         <h3>Выберите регион:</h3>
         <div class="form-row">
           <mat-radio-group aria-label="Регион" formControlName="region">
-            <mat-radio-button *ngFor="let region of regions" [value]="region">{{ region }}</mat-radio-button>
+            <mat-radio-button *ngFor="let region of cart.orderForm.regions"
+                              [value]="region">{{ region }}</mat-radio-button>
           </mat-radio-group>
         </div>
       </div>
@@ -29,11 +30,11 @@
       <div class="form-group">
         <h3>Адрес доставки:</h3>
         <div class="form-row">
-          <mat-form-field class="example-full-width" *ngIf="form.get('address').get('region').value === regions[1]">
+          <mat-form-field *ngIf="cart.orderForm.form.get('address').get('region').value === cart.orderForm.regions[1]">
             <input type="text" placeholder="Район" matInput
                    formControlName="district" [matAutocomplete]="auto" required>
             <mat-autocomplete #auto="matAutocomplete">
-              <mat-option *ngFor="let district of districts" [value]="district">
+              <mat-option *ngFor="let district of cart.orderForm.districts" [value]="district">
                 {{ district }}
               </mat-option>
             </mat-autocomplete>
@@ -60,12 +61,12 @@
       <h3>Время доставки:</h3>
       <div class="form-row" formGroupName="delivery">
         <mat-radio-group formControlName="day">
-          <mat-radio-button *ngFor="let day of this.dayVariants" [value]="day">{{ day }}</mat-radio-button>
+          <mat-radio-button *ngFor="let day of cart.orderForm.dayVariants" [value]="day">{{ day }}</mat-radio-button>
         </mat-radio-group>
         <mat-form-field style="flex-grow: 0">
           <mat-label>Время</mat-label>
           <mat-select formControlName="time">
-            <mat-option *ngFor="let time of timeVariants" [value]="time">
+            <mat-option *ngFor="let time of cart.orderForm.timeVariants" [value]="time">
               {{ time }}
             </mat-option>
           </mat-select>
@@ -76,7 +77,8 @@
         <h3>Способ оплаты:</h3>
         <div class="form-row">
           <mat-radio-group formControlName="paymentMethod">
-            <mat-radio-button *ngFor="let method of paymentMethods" [value]="method">{{ method }}</mat-radio-button>
+            <mat-radio-button *ngFor="let method of cart.orderForm.paymentMethods"
+                              [value]="method">{{ method }}</mat-radio-button>
           </mat-radio-group>
         </div>
       </div>

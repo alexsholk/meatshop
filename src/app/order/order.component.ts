@@ -1,6 +1,7 @@
-import {Component, OnChanges, SimpleChanges, ViewEncapsulation} from '@angular/core'
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core'
 import {CartService} from '../store/cart/cart.service'
-import {ProductWrapper} from '../store/types'
+import {Router} from '@angular/router'
+import {Subscription} from 'rxjs'
 
 @Component({
   selector: 'app-order',
@@ -8,9 +9,21 @@ import {ProductWrapper} from '../store/types'
   styleUrls: ['./order.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class OrderComponent {
+export class OrderComponent implements OnInit, OnDestroy {
+  subscription: Subscription
 
   constructor(
-    public cart: CartService) {
+    public cart: CartService,
+    private router: Router) {
+  }
+
+  ngOnInit(): void {
+    this.subscription = this.cart.cartEmptyEvent$.subscribe(() => {
+      return this.router.navigateByUrl('/')
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 }

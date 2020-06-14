@@ -1,13 +1,15 @@
-import {Injectable} from '@angular/core'
+import {EventEmitter, Injectable} from '@angular/core'
 import {ProductWrapper} from '../types'
+import {OrderFormService} from './order-form.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  cartEmptyEvent$: EventEmitter<any> = new EventEmitter<any>()
   items: ProductWrapper[] = []
 
-  constructor() {
+  constructor(public orderForm: OrderFormService) {
     this.loadCart()
   }
 
@@ -19,6 +21,9 @@ export class CartService {
   removeItem(index: number) {
     this.items.splice(index, 1)
     this.saveCart()
+    if (this.getItemsCount() === 0) {
+      this.cartEmptyEvent$.emit()
+    }
   }
 
   getItems(): ProductWrapper[] {
@@ -35,6 +40,11 @@ export class CartService {
       cost += item.getTotalCost()
     }
     return cost
+  }
+
+  submit() {
+    console.log(this.orderForm.form)
+    const formData = {...this.orderForm.form.value}
   }
 
   private saveCart() {
