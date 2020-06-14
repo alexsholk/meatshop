@@ -25,9 +25,18 @@
   <div class="form-group address">
     <h3>Адрес доставки:</h3>
     <div class="form-row">
-      <mat-form-field appearance="outline">
-        <mat-label>Район</mat-label>
-        <input matInput placeholder="Район" value="">
+      <mat-form-field class="example-full-width">
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Number"
+               matInput
+               [formControl]="myControl"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of options" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Улица</mat-label>

@@ -12,6 +12,10 @@
       flex-grow: 1;
     }
 
+    > mat-form-field {
+      flex-basis: 200px;
+    }
+
     mat-radio-group {
       flex-grow: 0;
     }

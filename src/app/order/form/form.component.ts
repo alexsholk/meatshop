@@ -1,4 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core'
+import {FormControl} from '@angular/forms'
 
 @Component({
   selector: '[app-order-form]',
@@ -12,6 +13,9 @@ export class FormComponent implements OnInit {
     {value: 'dinner', viewValue: 'Обед'},
     {value: 'evening', viewValue: 'Вечер'}
   ]
+  myControl = new FormControl()
+  options: string[] = ['One', 'Two', 'Three']
+
 
   constructor() {
   }
