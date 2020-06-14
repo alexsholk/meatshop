@@ -1,93 +1,94 @@
 <h1>Данные для заказа:</h1>
-<div class="order-form mat-typography">
+<div class="order-form">
   <form [formGroup]="form" (ngSubmit)="submit()">
-    <div class="form-group contacts">
+    <div class="form-group">
       <h3>Контактная информация:</h3>
       <div class="form-row">
         <mat-form-field appearance="outline">
           <mat-label>Имя</mat-label>
-          <input matInput placeholder="Имя" formControlName="name">
+          <input matInput placeholder="Имя" formControlName="name" required>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Телефон</mat-label>
-          <input matInput placeholder="Телефон" formControlName="phone">
+          <input matInput placeholder="Телефон" formControlName="phone"
+                 mask="(000) 000-00-00" prefix="+7 " [showMaskTyped]="true" required>
         </mat-form-field>
       </div>
     </div>
-    <div class="form-group region">
-      <h3>Выберите регион:</h3>
-      <div class="form-row">
-        <mat-radio-group aria-label="Регион">
-          <mat-radio-button value="1">Москва</mat-radio-button>
-          <mat-radio-button value="2">Московская область</mat-radio-button>
-        </mat-radio-group>
+
+    <ng-container formGroupName="address">
+      <div class="form-group">
+        <h3>Выберите регион:</h3>
+        <div class="form-row">
+          <mat-radio-group aria-label="Регион" formControlName="region">
+            <mat-radio-button *ngFor="let region of regions" [value]="region">{{ region }}</mat-radio-button>
+          </mat-radio-group>
+        </div>
       </div>
-    </div>
-    <div class="form-group address">
-      <h3>Адрес доставки:</h3>
-      <div class="form-row">
-        <mat-form-field class="example-full-width">
-          <input type="text"
-                 placeholder="Pick one"
-                 aria-label="Number"
-                 matInput
-                 [formControl]="myControl"
-                 [matAutocomplete]="auto">
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let option of options" [value]="option">
-              {{option}}
-            </mat-option>
-          </mat-autocomplete>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Улица</mat-label>
-          <input matInput placeholder="Улица" value="">
-        </mat-form-field>
+
+      <div class="form-group">
+        <h3>Адрес доставки:</h3>
+        <div class="form-row">
+          <mat-form-field class="example-full-width" *ngIf="form.get('address').get('region').value === regions[1]">
+            <input type="text" placeholder="Район" matInput
+                   formControlName="district" [matAutocomplete]="auto" required>
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let district of districts" [value]="district">
+                {{ district }}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Улица</mat-label>
+            <input matInput placeholder="Улица" formControlName="street" required>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <mat-form-field appearance="outline">
+            <mat-label>Дом</mat-label>
+            <input matInput placeholder="Дом" formControlName="house" required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Квартира</mat-label>
+            <input matInput placeholder="Квартира" formControlName="flat" required>
+          </mat-form-field>
+        </div>
       </div>
-      <div class="form-row">
-        <mat-form-field appearance="outline">
-          <mat-label>Дом</mat-label>
-          <input matInput placeholder="Дом" value="">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Квартира</mat-label>
-          <input matInput placeholder="Квартира" value="">
-        </mat-form-field>
-      </div>
-    </div>
-    <div class="form-group delivery-time">
+    </ng-container>
+
+    <div class="form-group">
       <h3>Время доставки:</h3>
-      <div class="form-row">
-        <mat-radio-group aria-label="Select an option">
-          <mat-radio-button value="1">Завтра</mat-radio-button>
-          <mat-radio-button value="2">Послезавтра</mat-radio-button>
+      <div class="form-row" formGroupName="delivery">
+        <mat-radio-group formControlName="day">
+          <mat-radio-button *ngFor="let day of this.dayVariants" [value]="day">{{ day }}</mat-radio-button>
         </mat-radio-group>
         <mat-form-field style="flex-grow: 0">
           <mat-label>Время</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let time of times" [value]="time.value">
-              {{ time.viewValue }}
+          <mat-select formControlName="time">
+            <mat-option *ngFor="let time of timeVariants" [value]="time">
+              {{ time }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="form-group payment-method">
+
+      <div class="form-group">
         <h3>Способ оплаты:</h3>
         <div class="form-row">
-          <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1">Онлайн-оплата</mat-radio-button>
-            <mat-radio-button value="2">Картой курьеру</mat-radio-button>
-            <mat-radio-button value="3">Наличными курьеру</mat-radio-button>
+          <mat-radio-group formControlName="paymentMethod">
+            <mat-radio-button *ngFor="let method of paymentMethods" [value]="method">{{ method }}</mat-radio-button>
           </mat-radio-group>
         </div>
       </div>
-      <div class="form-group hands-free-delivery">
+      <div class="form-group">
         <div class="form-row">
-          <mat-checkbox>Бесконтактная доставка</mat-checkbox>
+          <mat-checkbox formControlName="contactlessDelivery">Бесконтактная доставка</mat-checkbox>
         </div>
         <div class="form-row">
-          <mat-checkbox>Даю согласие на <a [routerLink]="['/p', 'pdpa']" target="_blank">обработку персональных
-            данных</a></mat-checkbox>
+          <mat-checkbox formControlName="pdpa" required>
+            Даю согласие на
+            <a [routerLink]="['/p', 'pdpa']" target="_blank">обработку персональных данных</a>
+          </mat-checkbox>
         </div>
       </div>
       <div class="form-group">

@@ -21,6 +21,11 @@ import {MatInputModule} from '@angular/material/input'
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import {ReactiveFormsModule} from '@angular/forms'
 import {MatAutocompleteModule} from '@angular/material/autocomplete'
+import {IConfig, NgxMaskModule} from 'ngx-mask'
+
+export const maskConfig: Partial<IConfig> = {
+  validation: true
+}
 
 @NgModule({
   declarations: [
@@ -46,7 +51,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete'
     MatInputModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    NgxMaskModule.forRoot(maskConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
