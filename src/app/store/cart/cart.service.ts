@@ -1,6 +1,10 @@
 import {EventEmitter, Injectable} from '@angular/core'
 import {ProductWrapper} from '../types'
 import {OrderFormService} from './order-form.service'
+import {HttpClient} from '@angular/common/http'
+import {environment} from '../../../environments/environment'
+import {catchError} from 'rxjs/operators'
+import {Observable, throwError} from 'rxjs'
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +13,9 @@ export class CartService {
   cartEmptyEvent$: EventEmitter<any> = new EventEmitter<any>()
   items: ProductWrapper[] = []
 
-  constructor(public orderForm: OrderFormService) {
+  constructor(
+    public orderForm: OrderFormService,
+    private httpClient: HttpClient) {
     this.loadCart()
   }
 
@@ -42,17 +48,36 @@ export class CartService {
     return cost
   }
 
-  submit() {
-    console.log(this.orderForm.form)
-    const formData = {...this.orderForm.form.value}
+  submit(): Observable<any> {
+    return this.httpClient
+      .post(`${environment.apiUrl}/orders`, {
+        cart: this.serialize(),
+        form: this.orderForm.form.value
+      })
+      .pipe(
+        catchError(err => {
+          console.log(err)
+          return throwError(err)
+        })
+      )
   }
 
-  private saveCart() {
+  clear() {
+    this.items = []
+    localStorage.removeItem('cart')
+    this.cartEmptyEvent$.emit()
+  }
+
+  private serialize() {
     const data = []
     for (const item of this.items) {
       data.push(item.serialize())
     }
-    localStorage.setItem('cart', JSON.stringify(data))
+    return JSON.stringify(data)
+  }
+
+  private saveCart() {
+    localStorage.setItem('cart', this.serialize())
   }
 
   private loadCart() {
@@ -63,7 +88,7 @@ export class CartService {
         this.items.push(ProductWrapper.deserialize(row))
       }
     } catch (e) {
-      localStorage.removeItem('cart')
+      this.clear()
     }
   }
 }

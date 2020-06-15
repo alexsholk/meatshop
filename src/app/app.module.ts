@@ -22,6 +22,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox'
 import {ReactiveFormsModule} from '@angular/forms'
 import {MatAutocompleteModule} from '@angular/material/autocomplete'
 import {IConfig, NgxMaskModule} from 'ngx-mask'
+import {DialogComponent} from './order/dialog/dialog.component'
+import {MatDialogModule} from '@angular/material/dialog'
+import {MatButtonModule} from '@angular/material/button'
 
 export const maskConfig: Partial<IConfig> = {
   validation: true
@@ -39,7 +42,8 @@ export const maskConfig: Partial<IConfig> = {
     ProductComponent,
     FormComponent,
     QuantityControlComponent,
-    ListComponent
+    ListComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,9 @@ export const maskConfig: Partial<IConfig> = {
     MatCheckboxModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    NgxMaskModule.forRoot(maskConfig)
+    NgxMaskModule.forRoot(maskConfig),
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

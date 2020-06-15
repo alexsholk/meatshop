@@ -23,9 +23,7 @@ export class OrderFormService {
       region: new FormControl(this.regions[0], [
         Validators.required
       ]),
-      district: new FormControl('', [
-        Validators.required
-      ]),
+      district: new FormControl(''),
       street: new FormControl('', [
         Validators.required
       ]),

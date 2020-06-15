@@ -1,6 +1,6 @@
 <h1>Данные для заказа:</h1>
 <div class="order-form">
-  <form [formGroup]="cart.orderForm.form" (ngSubmit)="cart.submit()">
+  <form [formGroup]="cart.orderForm.form" (ngSubmit)="submit()">
     <div class="form-group">
       <h3>Контактная информация:</h3>
       <div class="form-row">
@@ -94,7 +94,7 @@
         </div>
       </div>
       <div class="form-group">
-        <button type="submit" class="order-now">Оформить заказ</button>
+        <button type="submit" class="order-now" [disabled]="cart.orderForm.form.invalid">Оформить заказ</button>
       </div>
     </div>
   </form>
