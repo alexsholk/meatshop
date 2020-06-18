@@ -9,14 +9,14 @@
   <div class="product-description">
     <p>{{ product.getDescription() }}</p>
   </div>
-  <ul class="product-options" *ngIf="product.getOptions() as options">
+  <ul appClickStopPropagation class="product-options" *ngIf="product.getOptions() as options">
     <li *ngFor="let option of options">
       <strong>{{ option.title }}:</strong>
       <a (click)="openOptions(option)">{{ getOptionValue(option)?.title || 'Не выбрано' }}</a>
     </li>
   </ul>
   <div class="option-overlay" *ngIf="activeOption">
-    <div class="option-wrapper">
+    <div appClickStopPropagation class="option-wrapper">
       <h3>{{ activeOption.title }}</h3>
       <div class="values-wrapper">
         <ul>
@@ -25,11 +25,10 @@
           </li>
           <li *ngFor="let value of activeOption.values; index as i"
               [class.active]="activeOption.value === i">
-            <a (click)="product.setOptionValue(activeOption, i)">{{ value.title }}</a>
+            <a (click)="product.setOptionValue(activeOption, i); closeOptions()">{{ value.title }}</a>
           </li>
         </ul>
       </div>
-      <button class="rounded-button ok-btn" (click)="closeOptions()">Ок</button>
     </div>
   </div>
   <div class="product-quantity-container" app-quantity-control [product]="product"></div>

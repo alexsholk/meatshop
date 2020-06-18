@@ -1,7 +1,7 @@
 <div class="details">
   <h3 class="details-header" (click)="toggleCartView()">Корзина
-    <ng-container *ngIf="!isOpen">({{ cart.getItemsCount() }})</ng-container>
-    <span class="open-close-btn fa"
+    <ng-container *ngIf="!isOpen && cart.getItemsCount()">({{ cart.getItemsCount() }})</ng-container>
+    <span class="open-close-btn fa" *ngIf="cart.getItemsCount()"
           [ngClass]="{'fa-angle-up': isOpen, 'fa-angle-down': !isOpen}">
     </span>
   </h3>

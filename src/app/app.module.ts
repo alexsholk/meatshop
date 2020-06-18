@@ -25,6 +25,7 @@ import {IConfig, NgxMaskModule} from 'ngx-mask'
 import {DialogComponent} from './order/dialog/dialog.component'
 import {MatDialogModule} from '@angular/material/dialog'
 import {MatButtonModule} from '@angular/material/button'
+import {ClickStopPropagationDirective} from './click-stop-propagation.directive'
 
 export const maskConfig: Partial<IConfig> = {
   validation: true
@@ -43,7 +44,8 @@ export const maskConfig: Partial<IConfig> = {
     FormComponent,
     QuantityControlComponent,
     ListComponent,
-    DialogComponent
+    DialogComponent,
+    ClickStopPropagationDirective
   ],
   imports: [
     BrowserModule,

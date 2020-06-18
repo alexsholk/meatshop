@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, Renderer2, ViewEncapsulation} from '@angular/core'
+import {Component, EventEmitter, HostListener, OnDestroy, OnInit, Renderer2, ViewEncapsulation} from '@angular/core'
 import {StoreService} from './store.service'
 import {StateService} from './state.service'
 import {ActivatedRoute, Router} from '@angular/router'
@@ -16,6 +16,7 @@ import {appAnimations} from '../app.animations'
 export class StoreComponent implements OnInit, OnDestroy {
   public products$: Observable<ProductWrapper[]>
   public activeProductId: number = null
+  public closeOptionEvent: EventEmitter<any> = new EventEmitter<any>()
 
   constructor(
     private route: ActivatedRoute,
@@ -57,5 +58,10 @@ export class StoreComponent implements OnInit, OnDestroy {
     } else {
       this.renderer.removeClass(document.body, 'modal-open')
     }
+  }
+
+  @HostListener('document:click', ['$event.target'])
+  onClickOutside(target) {
+    this.closeOptionEvent.emit()
   }
 }

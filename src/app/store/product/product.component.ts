@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core'
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewEncapsulation} from '@angular/core'
 import {InputType, Option, ProductWrapper} from '../types'
 import {CartService} from '../cart/cart.service'
+import {Subscription} from 'rxjs'
 
 @Component({
   selector: '[app-product]',
@@ -8,9 +9,12 @@ import {CartService} from '../cart/cart.service'
   styleUrls: ['./product.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit, OnDestroy {
   @Input() product: ProductWrapper
+  @Input() closeOptionEvent: EventEmitter<any>
   @Output() activateProduct: EventEmitter<number> = new EventEmitter<number>()
+
+  private subs: Subscription[] = []
   public inputType = InputType
   public activeOption: Option = null
   public getOptionValue = ProductWrapper.getOptionValue
@@ -21,6 +25,19 @@ export class ProductComponent {
 
   private static isSmallDisplay(): boolean {
     return window.innerWidth < 600
+  }
+
+  ngOnInit(): void {
+    this.subs.push(
+      this.closeOptionEvent
+        .subscribe(() => this.closeOptions())
+    )
+  }
+
+  ngOnDestroy(): void {
+    for (const subscription of this.subs) {
+      subscription.unsubscribe()
+    }
   }
 
   activate() {
