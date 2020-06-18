@@ -21,7 +21,7 @@
       <div class="values-wrapper">
         <ul>
           <li *ngIf="!activeOption.required" [class.active]="activeOption.value === null">
-            <a (click)="activeOption.value = null">Не выбрано</a>
+            <a (click)="product.setOptionValue(activeOption, null); closeOptions()">Не выбрано</a>
           </li>
           <li *ngFor="let value of activeOption.values; index as i"
               [class.active]="activeOption.value === i">
