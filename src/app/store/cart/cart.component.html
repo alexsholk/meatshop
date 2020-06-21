@@ -15,5 +15,7 @@
     </div>
   </ng-template>
 </div>
-<span class="fa fa-shopping-cart"></span>
-<span class="total-cost">{{ cart.getItemsCost() | number }} &#8381;</span>
+<a class="short-info" routerLink="/order">
+  <span class="fa fa-shopping-cart"></span>
+  <span class="total-cost">{{ cart.getItemsCost() | number }} &#8381;</span>
+</a>

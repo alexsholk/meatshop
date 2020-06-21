@@ -4,21 +4,25 @@
   position: fixed;
   right: 0;
   bottom: 12*$basis;
-  padding: 3*$basis 4*$basis;
   z-index: $zCart;
   background: $ultraAccent;
   color: $dark;
   font: 14px/16px $defaultFont;
   box-shadow: $shadow;
 
-  .fa-shopping-cart {
-    display: inline-block;
-    margin-right: 2* $basis;
-    color: $white
-  }
+  .short-info {
+    display: block;
+    padding: 3*$basis 4*$basis;
 
-  .total-cost {
-    color: $white;
+    .fa-shopping-cart {
+      display: inline-block;
+      margin-right: 2* $basis;
+      color: $white
+    }
+
+    .total-cost {
+      color: $white;
+    }
   }
 
   .details {
@@ -64,16 +68,16 @@
     margin-top: 48px;
     position: sticky;
     top: 63px + 3*$basis + 48px; // Header height + margins
+    padding: 3*$basis 4*$basis;
     background: $white;
     border-bottom: 4px solid $light;
 
-    .details {
-      display: block;
+    .short-info {
+      display: none;
     }
 
-    .fa-shopping-cart,
-    .total-cost {
-      display: none;
+    .details {
+      display: block;
     }
   }
 }
