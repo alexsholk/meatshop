@@ -51,7 +51,7 @@ export class CartService {
   submit(): Observable<any> {
     return this.httpClient
       .post(`${environment.apiUrl}/orders`, {
-        cart: this.serialize(),
+        cart: this.items.map((productWrapper) => productWrapper.getProduct()),
         form: this.orderForm.form.value
       })
       .pipe(

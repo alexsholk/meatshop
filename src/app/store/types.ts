@@ -14,6 +14,7 @@ export interface Option {
   title: string
   type?: OptionType
   required: boolean
+  empty_value_title: string
   mutually_exclusive?: number
   values: OptionValue[]
   value?: number // synthetic
@@ -101,6 +102,10 @@ export class ProductWrapper {
 
   clone() {
     return ProductWrapper.deserialize(this.serialize())
+  }
+
+  getProduct() {
+    return this.product
   }
 
   serialize() {
