@@ -2,6 +2,6 @@ import {Environment} from './environment.type'
 
 export const environment: Environment = {
   production: true,
-  apiUrl: 'http://api.meloveat.poko.by/api',
-  assetsHost: 'http://api.meloveat.poko.by/',
+  apiUrl: 'http://api.miloveat.ru/api',
+  assetsHost: 'http://api.miloveat.ru/',
 }
