@@ -21,4 +21,8 @@ export class HeaderComponent {
   toggleNavActive() {
     this.isNavActive = !this.isNavActive
   }
+
+  goToBlog() {
+    window.open('http://miloveat.ru', '_blank')
+  }
 }

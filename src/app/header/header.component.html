@@ -13,7 +13,7 @@
       <li class="separator"></li>
       <li routerLinkActive="active"><a [routerLink]="['/p', 'delivery']">Доставка и оплата</a></li>
       <li routerLinkActive="active"><a [routerLink]="['/p', 'faq']" routerLinkActive="active">FAQ</a></li>
-      <li><a href="//miloveat.ru/" target="_blank">Блог</a></li>
+      <li><a (click)="goToBlog()">Блог</a></li>
     </ul>
   </div>
 </div>
