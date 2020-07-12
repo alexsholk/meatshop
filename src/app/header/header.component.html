@@ -1,9 +1,7 @@
 <div class="container">
   <div class="wrapper header-wrapper">
     <button class="header-nav-btn fa fa-bars" (click)="toggleNavActive()"></button>
-    <a routerLink="/order" class="cart-link fa fa-shopping-cart">
-      <span>Корзина ({{ cart.getItemsCount() }})</span>
-    </a>
+    <a routerLink="/order" class="cart-link fa fa-shopping-cart"><span></span></a>
     <div class="logo">
       <a routerLink="/">Milov<span>eat.ru</span></a>
     </div>
@@ -12,6 +10,10 @@
           [class.active]="(state.getCurrentCategory() | async)?.id === category.id">
         <a [routerLink]="['/c', category.data.slug]">{{ category.data.title }}</a>
       </li>
+      <li class="separator"></li>
+      <li routerLinkActive="active"><a [routerLink]="['/p', 'delivery']">Доставка и оплата</a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/p', 'faq']" routerLinkActive="active">FAQ</a></li>
+      <li><a href="//miloveat.ru/" target="_blank">Блог</a></li>
     </ul>
   </div>
 </div>

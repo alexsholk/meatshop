@@ -1,6 +1,9 @@
 <div class="container">
   <div class="wrapper footer-wrapper">
     <ul class="footer-nav">
+      <li>
+        <a href="tel:+79776033422">+7 (977) 603-34-22</a> &copy; Miloveat.ru, {{ currentYear() }}
+      </li>
       <li *ngFor="let link of links" routerLinkActive="active">
         <a [routerLink]="link.route">{{ link.title }}</a>
       </li>

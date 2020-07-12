@@ -6,10 +6,14 @@
   .footer-nav {
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-around;
+    justify-content: space-between;
 
     li {
       margin-bottom: 2*$basis;
+
+      a {
+        text-decoration: underline;
+      }
 
       &.active {
         a {

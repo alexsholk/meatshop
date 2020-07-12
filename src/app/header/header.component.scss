@@ -40,6 +40,7 @@
     .cart-link {
       float: right;
       color: $accent;
+      white-space: nowrap;
 
       span {
         margin-left: 2*$basis;
@@ -67,13 +68,20 @@
           padding: 2*$basis 4*$basis;
           cursor: pointer;
           border-bottom: 2px solid transparent;
+          white-space: nowrap;
         }
 
         &.active {
           a {
             color: $accent;
-            border-color: $accent;
+            font-weight: bold;
           }
+        }
+
+        &.separator {
+          max-width: 200px;
+          margin: 2*$basis auto;
+          border-bottom: 1px solid #999;
         }
       }
 
@@ -86,9 +94,10 @@
       display: flex;
       flex-flow: row nowrap;
       align-items: baseline;
+      justify-content: space-between;
 
       .logo {
-        margin-right: 80px;
+        margin-right: 20px;
       }
 
       .header-nav-btn {
@@ -107,12 +116,18 @@
         &.active {
           display: flex;
         }
+
+        li {
+          &.separator {
+            margin: $basis 2*$basis;
+            border-right: 1px solid #999;
+          }
+        }
       }
 
       .cart-link {
         float: none;
         order: 3;
-        margin-left: auto;
 
         span {
           display: inline-block;
