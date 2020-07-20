@@ -23,6 +23,6 @@ export class HeaderComponent {
   }
 
   goToBlog() {
-    window.open('http://miloveat.ru', '_blank')
+    window.open('https://miloveat.ru', '_blank')
   }
 }

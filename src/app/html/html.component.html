@@ -2,7 +2,7 @@
   <div class="wrapper content-wrapper">
     <div class="simple-page-wrapper" [@fade]="page.id" *ngIf="page$ | async as page">
       <h1 class="simple-page-header">{{ page.data.title }}</h1>
-      <div [innerHTML]="page.data.content" class="simple-page-content"></div>
+      <div [innerHTML]="html" class="simple-page-content"></div>
     </div>
   </div>
 </div>

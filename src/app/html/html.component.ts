@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router'
 import {HtmlService} from './html.service'
 import {map, shareReplay, switchMap} from 'rxjs/operators'
 import {appAnimations} from '../app.animations'
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser'
 
 @Component({
   selector: 'app-html',
@@ -17,11 +18,13 @@ export class HtmlComponent implements OnInit, OnDestroy {
 
   subs: Array<Subscription> = []
   page$: Observable<SimplePage>
+  html: SafeHtml
 
   constructor(
     public route: ActivatedRoute,
     private router: Router,
-    private service: HtmlService) {
+    private service: HtmlService,
+    private sanitizer: DomSanitizer) {
   }
 
   ngOnInit(): void {
@@ -35,6 +38,7 @@ export class HtmlComponent implements OnInit, OnDestroy {
       )
 
     this.subs.push(this.page$.subscribe(page => {
+      this.html = this.sanitizer.bypassSecurityTrustHtml(page.data.content)
       if (!page) {
         return this.router.navigateByUrl('p/404')
       }
