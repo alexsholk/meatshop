@@ -43,6 +43,7 @@
 
     h3 {
       margin-bottom: 2*$basis;
+      text-align: left;
     }
 
     .product-description {
@@ -51,6 +52,117 @@
       line-height: 14px;
       margin-bottom: 3*$basis;
       color: lighten($dark, 2);
+    }
+
+    .options-wrapper {
+      display: none;
+
+      .simple-options-wrapper {
+        min-height: 162px;
+        margin-bottom: 3*$basis;
+      }
+
+      .exclusive-options-wrapper {
+        display: flex;
+        flex-flow: row nowrap;
+        margin-bottom: 4*$basis;
+      }
+
+      .radio-option {
+        margin-bottom: 2*$basis;
+
+        h4 {
+          text-align: center;
+          margin-bottom: 2*$basis;
+        }
+      }
+
+      .radio-switch {
+        border: 1px solid #888888;
+        border-radius: 50px;
+        padding: $basis;
+        display: flex;
+        flex-flow: row nowrap;
+        background: linear-gradient(0deg, #ececec, transparent);
+
+        li {
+          font-size: 12px;
+          line-height: 14px;
+          cursor: pointer;
+          flex-grow: 1;
+          min-height: 2*14px + 2*$basis;
+          display: flex;
+          flex-flow: column;
+          justify-content: center;
+          text-align: center;
+          border-right: 1px solid #888888;
+
+          &:last-child {
+            border-right: none;
+          }
+
+          > a {
+            display: block;
+            padding: $basis;
+          }
+
+          &.active > a {
+            color: $accent;
+            font-weight: bold;
+          }
+        }
+      }
+
+      .exclusive-option {
+        flex-basis: 40%;
+        flex-grow: 1;
+
+        &:last-child {
+          text-align: right;
+        }
+
+        &:only-child {
+          text-align: center;
+        }
+
+        h4 {
+          margin-bottom: $basis;
+        }
+
+        a {
+          font-size: 12px;
+          color: $accent;
+          text-decoration: underline;
+          cursor: pointer;
+        }
+      }
+
+      .separator-or {
+        position: relative;
+        margin: 0 3*$basis;
+
+        &:before {
+          content: "";
+          display: block;
+          position: absolute;
+          left: calc(50% - 1px);
+          top: 0;
+          width: 0;
+
+          height: 38px;
+          border-right: 1px solid $dark;
+        }
+
+        p {
+          position: relative;
+          text-align: center;
+          font-size: 12px;
+          line-height: 14px;
+          margin: 12px 0;
+          background: white;
+          z-index: 1;
+        }
+      }
     }
 
     .product-options {
@@ -73,6 +185,10 @@
       }
     }
 
+    .product-quantity-container {
+      justify-content: center;
+    }
+
     .product-controls {
       display: flex;
       flex-flow: row nowrap;
@@ -82,7 +198,7 @@
       .total-cost {
         flex-grow: 1;
 
-        .total-cost {
+        p.total-cost {
           display: none;
         }
       }
@@ -124,6 +240,18 @@
     .product-info {
       padding: 0;
 
+      h3 {
+        text-align: center;
+      }
+
+      .product-description {
+        text-align: center;
+      }
+
+      .options-wrapper {
+        display: block;
+      }
+
       .product-options {
         display: block;
       }
@@ -134,11 +262,11 @@
 
       .product-controls {
         .total-cost {
-          .price-range {
+          p.price-range {
             display: none;
           }
 
-          .total-cost {
+          p.total-cost {
             display: block;
           }
         }
@@ -205,6 +333,18 @@
     .product-info {
       padding: 0;
 
+      h3 {
+        text-align: center;
+      }
+
+      .product-description {
+        text-align: center;
+      }
+
+      .options-wrapper {
+        display: block;
+      }
+
       .product-options {
         flex-grow: 1;
         display: block;
@@ -216,11 +356,11 @@
 
       .product-controls {
         .total-cost {
-          .price-range {
+          p.price-range {
             display: none;
           }
 
-          .total-cost {
+          p.total-cost {
             display: block;
           }
         }
@@ -254,6 +394,7 @@
   padding: 5*$basis 4*$basis 8*$basis;
   background: rgba(0, 0, 0, 0.1);
   border-radius: $basis;
+  z-index: 2;
 
   .option-wrapper {
     display: flex;
@@ -265,7 +406,7 @@
 
     .values-wrapper {
       overflow-y: auto;
-      max-height: 240px;
+      max-height: 320px;
       margin: 4*$basis 0 6*$basis;
 
       ul {

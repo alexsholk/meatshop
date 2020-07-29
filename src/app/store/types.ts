@@ -131,6 +131,14 @@ export class ProductWrapper {
     return [...ProductWrapper.iterateOptions(this.product.data.options)]
   }
 
+  getOption(code: string): Option | null {
+    for (const option of this.getOptions()) {
+      if (option.code === code) {
+        return option
+      }
+    }
+  }
+
   /**
    * Type of amount input (weight|count)
    */
@@ -153,7 +161,7 @@ export class ProductWrapper {
   getInputTypeLabel(): string {
     switch (this.getInputType()) {
       case InputType.count:
-        return 'Кол-во'
+        return 'Количество'
       case InputType.weight:
         return 'Вес'
     }

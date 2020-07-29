@@ -9,12 +9,54 @@
   <div class="product-description">
     <p>{{ product.getDescription() }}</p>
   </div>
+
+  <div class="options-wrapper">
+    <div class="simple-options-wrapper">
+      <div *ngIf="product.getOption('slicing') as option" class="radio-option">
+        <h4>Выберите нарезку</h4>
+        <ul class="radio-switch">
+          <li *ngFor="let value of option.values; index as i"
+              [class.active]="option.value === i">
+            <a (click)="product.setOptionValue(option, i); closeOptions()">{{ value.title }}</a>
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="product.getOption('type') as option" class="radio-option">
+        <h4>{{ option.title }}</h4>
+        <ul class="radio-switch">
+          <li *ngFor="let value of option.values; index as i"
+              [class.active]="option.value === i">
+            <a (click)="product.setOptionValue(option, i); closeOptions()">{{ value.title }}</a>
+          </li>
+        </ul>
+      </div>
+    </div><!-- .simple-options-wrapper -->
+
+    <div class="exclusive-options-wrapper" appClickStopPropagation>
+      <div *ngIf="product.getOption('marinade') as option" class="exclusive-option">
+        <h4>Замариновать</h4>
+        <a (click)="openOptions(option)">{{ getOptionValue(option)?.title || '+ Выбрать маринад' }}</a>
+      </div>
+      <div *ngIf="product.getOption('marinade') && product.getOption('spice')" class="separator-or">
+        <p>или</p>
+      </div>
+      <div *ngIf="product.getOption('spice') as option" class="exclusive-option">
+        <h4>Добавить специи</h4>
+        <a (click)="openOptions(option)">{{ getOptionValue(option)?.title || '+ Выбрать специи' }}</a>
+      </div>
+    </div><!-- .exclusive-options-wrapper -->
+  </div><!-- .options-wrapper -->
+
+  <!--
   <ul appClickStopPropagation class="product-options" *ngIf="product.getOptions() as options">
     <li *ngFor="let option of options">
       <strong>{{ option.title }}:</strong>
       <a (click)="openOptions(option)">{{ getOptionValue(option)?.title || 'Не выбрано' }}</a>
     </li>
   </ul>
+  -->
+
   <div class="option-overlay" *ngIf="activeOption">
     <div appClickStopPropagation class="option-wrapper">
       <h3>{{ activeOption.title }}</h3>
@@ -30,16 +72,15 @@
         </ul>
       </div>
     </div>
-  </div>
+  </div><!-- .option-overlay -->
+
   <div class="product-quantity-container" app-quantity-control [product]="product"></div>
   <div class="product-controls">
     <div class="total-cost">
       <p class="price-range">от <strong>{{ product.getMinPrice() | number }}&nbsp;&#8381;/кг</strong></p>
       <p class="total-cost">
-        <strong>{{ product.getTotalCost() | number }}&nbsp;&#8381;</strong>
-        <ng-container *ngIf="product.getInputType() === inputType.count">
-          ({{ product.getWeight() / 1000 | number }}&nbsp;кг)
-        </ng-container>
+        <strong>{{ product.getTotalCost() | number }}&nbsp;&#8381;&nbsp;</strong>
+        <small>(Примерный вес: {{ product.getWeight() / 1000 | number }}&nbsp;кг)</small>
       </p>
     </div>
     <button class="rounded-button choose-btn" (click)="activate()">Выбрать</button>
