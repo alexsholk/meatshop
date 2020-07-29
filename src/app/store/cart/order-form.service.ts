@@ -19,6 +19,10 @@ export class OrderFormService {
       Validators.required,
       Validators.pattern(/^\d+$/)
     ]),
+    email: new FormControl('', [
+        Validators.required,
+        Validators.email
+    ]),
     address: new FormGroup({
       region: new FormControl(this.regions[0], [
         Validators.required

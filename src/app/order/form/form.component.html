@@ -13,6 +13,10 @@
           <input matInput placeholder="Телефон" formControlName="phone"
                  mask="(000) 000-00-00" prefix="+7 " [showMaskTyped]="true" required>
         </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" [formControlName]="'email'" required>
+        </mat-form-field>
       </div>
     </div>
 
