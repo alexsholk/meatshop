@@ -8,7 +8,7 @@ export class OrderFormService {
   regions: string[] = ['Москва', 'Московская область']
   districts: string[] = ['Дмитровский район', 'Дмитров']
   dayVariants: string[] = ['Завтра', 'Послезавтра']
-  timeVariants: string[] = ['Утро', 'Обед', 'Вечер']
+  timeVariants: string[] = ['Утро 10:00-15:00', 'Обед 15:00-20:00', 'Вечер 20:00-23:00']
   paymentMethods: string[] = [/*'Онлайн-оплата',*/ 'Картой курьеру', 'Наличными курьеру']
 
   form: FormGroup = new FormGroup({
