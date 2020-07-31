@@ -29,13 +29,16 @@
     flex-flow: row nowrap;
 
     .left-side {
-      margin-right: 6*$basis;
+      width: 45%;
+    }
+
+    .right-side {
+      width: 55%;
     }
 
     .left-side,
     .right-side {
       flex-shrink: 0;
-      width: calc(50% - #{3*$basis});
     }
 
     .cart-wrapper,

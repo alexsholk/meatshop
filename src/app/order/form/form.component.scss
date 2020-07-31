@@ -13,7 +13,7 @@
     }
 
     > mat-form-field {
-      flex-basis: 200px;
+      flex-basis: 150px;
     }
 
     mat-radio-group {
@@ -61,5 +61,10 @@
     &[disabled] {
       background: $altNeutral;
     }
+  }
+
+  @media (min-width: $medium) {
+    margin-left: 24px;
+    margin-right: 12px;
   }
 }
