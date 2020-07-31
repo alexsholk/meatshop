@@ -8,7 +8,7 @@ import {Component, ViewEncapsulation} from '@angular/core'
 })
 export class FooterComponent {
   links = [
-    {route: ['/p', 'rights'], title: 'Правовой уголок'},
+    {route: ['/p', 'rights'], title: 'Правовые документы'},
   ]
 
   currentYear(): number {

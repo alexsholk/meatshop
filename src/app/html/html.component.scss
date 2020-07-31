@@ -1,7 +1,7 @@
 @import "../../styles/variables";
 
 .simple-page-content {
-  h2 {
+  h2, h3, h4 {
     margin-bottom: 15px;
   }
 
@@ -9,5 +9,18 @@
     line-height: 24px;
     font-size: 16px;
     margin-bottom: 15px;
+  }
+
+  a[href^="tel"] {
+    color: $telLink;
+  }
+
+  ul {
+    list-style: disc inside;
+    margin-bottom: 20px;
+  }
+
+  iframe {
+    margin: 15px 0;
   }
 }
