@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~9.1.9",
     "@angular/platform-browser-dynamic": "~9.1.9",
     "@angular/router": "~9.1.9",
+    "@kolkov/ngx-metrika": "^0.5.2",
     "angulartics2": "^10.0.0",
     "ng-animate": "^0.3.4",
     "ngx-mask": "^9.1.2",

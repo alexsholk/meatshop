@@ -84,6 +84,9 @@
       </p>
     </div>
     <button class="rounded-button choose-btn" (click)="activate()">Выбрать</button>
-    <button class="rounded-button add-to-cart-btn" (click)="addToCart(product)">В корзину</button>
+    <button ymGoal trackOn="click" target="ADD_TO_CART"
+            [params]="{ targetLabel: 'Product added to cart' }"
+            class="rounded-button add-to-cart-btn" (click)="addToCart(product)">В корзину
+    </button>
   </div>
 </div>

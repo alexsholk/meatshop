@@ -1,5 +1,6 @@
 export interface Environment {
-  production: boolean,
+  production: boolean
   apiUrl: string
   assetsHost: string
+  yaCounterId: number
 }

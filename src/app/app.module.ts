@@ -27,8 +27,10 @@ import {MatDialogModule} from '@angular/material/dialog'
 import {MatButtonModule} from '@angular/material/button'
 import {ClickStopPropagationDirective} from './click-stop-propagation.directive'
 
-import { Angulartics2Module } from 'angulartics2'
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga'
+import {Angulartics2Module} from 'angulartics2'
+import {NgxMetrikaModule} from '@kolkov/ngx-metrika'
+
+import {environment} from '../environments/environment'
 
 export const maskConfig: Partial<IConfig> = {
   validation: true
@@ -64,7 +66,15 @@ export const maskConfig: Partial<IConfig> = {
     NgxMaskModule.forRoot(maskConfig),
     MatDialogModule,
     MatButtonModule,
-    Angulartics2Module.forRoot()
+    Angulartics2Module.forRoot(),
+    NgxMetrikaModule.forRoot({
+      id: environment.yaCounterId,
+      defer: true,
+      webvisor: true,
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

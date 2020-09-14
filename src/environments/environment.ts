@@ -7,7 +7,8 @@ import {Environment} from './environment.type'
 export const environment: Environment = {
   production: false,
   apiUrl: 'https://localhost:8000/api',
-  assetsHost: 'https://localhost:8000'
+  assetsHost: 'https://localhost:8000',
+  yaCounterId: 67331509,
 }
 
 /*
