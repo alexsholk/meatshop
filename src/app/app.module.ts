@@ -27,6 +27,9 @@ import {MatDialogModule} from '@angular/material/dialog'
 import {MatButtonModule} from '@angular/material/button'
 import {ClickStopPropagationDirective} from './click-stop-propagation.directive'
 
+import { Angulartics2Module } from 'angulartics2'
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga'
+
 export const maskConfig: Partial<IConfig> = {
   validation: true
 }
@@ -60,7 +63,8 @@ export const maskConfig: Partial<IConfig> = {
     MatAutocompleteModule,
     NgxMaskModule.forRoot(maskConfig),
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    Angulartics2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
