@@ -8,7 +8,7 @@ export const environment: Environment = {
   production: false,
   apiUrl: 'https://localhost:8000/api',
   assetsHost: 'https://localhost:8000',
-  yaCounterId: 67331509,
+  yaCounterId: 67333150,
 }
 
 /*

@@ -4,5 +4,5 @@ export const environment: Environment = {
   production: true,
   apiUrl: 'https://api.miloveat.ru/api',
   assetsHost: 'https://api.miloveat.ru/',
-  yaCounterId: 67331509,
+  yaCounterId: 67333150,
 }
